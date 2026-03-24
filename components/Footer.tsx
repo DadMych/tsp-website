@@ -89,27 +89,6 @@ export default function Footer() {
               </a>
             </div>
 
-            {/* Secondary links */}
-            <div className="flex items-center gap-5 flex-wrap">
-              {/* Replace PLACEHOLDER_LINKEDIN_URL with real URL */}
-              <a
-                href={siteConfig.linkedinUrl}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="font-mono font-bold text-sm text-cream/40 hover:text-brutal-yellow transition-colors duration-150 uppercase tracking-widest"
-              >
-                LinkedIn ↗
-              </a>
-              {/* Replace PLACEHOLDER_GITHUB_URL with real URL — optional */}
-              <a
-                href={siteConfig.githubUrl}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="font-mono font-bold text-sm text-cream/40 hover:text-brutal-yellow transition-colors duration-150 uppercase tracking-widest"
-              >
-                GitHub ↗
-              </a>
-            </div>
           </motion.div>
         </div>
       </div>

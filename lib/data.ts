@@ -7,8 +7,6 @@ export const siteConfig = {
   email: "oleksii@tfpdev.com",
   // Replace with real URLs:
   calendlyUrl: "https://calendly.com/oleksii-tfpdev/30min",
-  linkedinUrl: "PLACEHOLDER_LINKEDIN_URL",  // e.g. "https://linkedin.com/in/yourname"
-  githubUrl: "PLACEHOLDER_GITHUB_URL",      // e.g. "https://github.com/yourname"
 };
 
 // ── Services ─────────────────────────────────────────────────────────────────
