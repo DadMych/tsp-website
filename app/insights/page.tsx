@@ -8,9 +8,11 @@ import {
   insights,
   categories,
   explainers,
+  lessons as lessonsData,
   type Insight,
   type InsightCategory,
   type ExplainerCard,
+  type Lesson,
 } from "@/lib/insights-data";
 import { siteConfig } from "@/lib/data";
 
@@ -53,18 +55,18 @@ const TOTAL = 24; // 23 regular + 1 redacted
 const takeaways = [
   {
     number: "01",
-    text: "Know what NOT to build. Every feature you skip is a feature you don't have to support.",
-    refs: [15],
+    text: "Your users don't care about your architecture. They care about whether the product solves their problem. Build for that.",
+    refs: [3, 15],
   },
   {
     number: "02",
-    text: "Pragmatic sequencing beats premature optimization. Defer testing until domain boundaries are stable — not until the project is over.",
+    text: "Tech debt you choose deliberately is manageable. Tech debt you accumulate by accident is a liability. Know the difference.",
     refs: [18],
   },
   {
     number: "03",
-    text: "Translate every technical decision into business risk language. Stakeholders who understand the trade-offs make better requests.",
-    refs: [23],
+    text: "If your staging environment is a toy, your production will be a disaster. Infrastructure decisions are product decisions.",
+    refs: [7],
   },
 ];
 
@@ -408,10 +410,12 @@ export default function InsightsPage() {
             <br />building real
             <br /><span className="text-brutal-yellow">products.</span>
           </h1>
-          <p className="font-display text-base sm:text-lg text-white/55 max-w-2xl leading-relaxed">
-            24 decisions from a real 18-person, 6-month platform build.
-            No theory — just what we chose, why, and what happened.{" "}
+          <p className="font-display text-base sm:text-lg text-white/55 max-w-2xl leading-relaxed mb-4">
+            24 decisions from a real platform build. Organized into 3 lessons that took 8 years to learn.{" "}
             <span className="text-brutal-red font-semibold">One is classified.</span>
+          </p>
+          <p className="font-mono text-xs text-white/30 max-w-2xl leading-relaxed">
+            Numbers are approximate where stated and exact where marked. I&apos;d rather say &ldquo;I don&apos;t have that number&rdquo; than make one up. If you want specifics on any of these, ask me on a call — I&apos;ll tell you what I know and what I don&apos;t.
           </p>
         </div>
       </section>
@@ -472,44 +476,110 @@ export default function InsightsPage() {
         </div>
       </div>
 
-      {/* ── Card grid ─────────────────────────────────────── */}
-      <section className="bg-cream py-12 border-b-[3px] border-brutal-black">
-        <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
+      {/* ── Card grid — lesson view (ALL) or flat category view ─── */}
+      {active === "all" ? (
+        // ── LESSON VIEW ─────────────────────────────────────────
+        <>
+          {lessonsData.map((lesson) => {
+            const lessonInsights = insights
+              .filter((i) => i.lesson === lesson.key && !i.redacted)
+              .sort((a, b) => a.id - b.id);
+            const redactedCard = lesson.key === "pragmatism"
+              ? insights.find((i) => i.redacted)
+              : undefined;
+            const lessonReadTime = calcReadingTime(lessonInsights);
 
-          {/* Yellow explainer legend */}
-          <div className="flex flex-wrap items-center gap-3 mb-10">
-            <div className="flex items-center gap-2 bg-brutal-yellow border-[2px] border-brutal-black px-3 py-1.5">
-              <Info size={12} strokeWidth={2.5} />
-              <span className="font-mono text-[10px] font-bold uppercase tracking-widest">In Plain English</span>
-            </div>
-            <span className="font-mono text-xs text-brutal-black/40">
-              — yellow cards translate technical jargon for non-technical readers
-            </span>
-          </div>
+            return (
+              <Fragment key={lesson.key}>
+                {/* Black lesson divider */}
+                <div className="bg-brutal-black border-b-[3px] border-brutal-black py-14 md:py-20 relative overflow-hidden">
+                  {/* Big number watermark */}
+                  <span
+                    className="absolute top-0 right-6 font-display font-black text-brutal-yellow leading-none select-none pointer-events-none"
+                    style={{ fontSize: "clamp(7rem,16vw,13rem)", opacity: 0.12 }}
+                    aria-hidden="true"
+                  >
+                    {lesson.number}
+                  </span>
+                  <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+                    <p className="font-mono text-[11px] font-bold uppercase tracking-[0.2em] text-white/30 mb-4">
+                      Lesson {lesson.number}
+                    </p>
+                    <h2
+                      className="font-display font-black text-3xl sm:text-4xl md:text-5xl text-white uppercase leading-[0.95] tracking-[-0.03em] mb-4"
+                      style={{ whiteSpace: "pre-line" }}
+                    >
+                      {lesson.title}
+                    </h2>
+                    <p className="font-display text-base sm:text-lg text-white/55 mb-6 max-w-xl">
+                      {lesson.subtitle}
+                    </p>
+                    <p className="font-mono text-xs text-white/25">
+                      {lessonInsights.length} insight{lessonInsights.length !== 1 ? "s" : ""}
+                      {" · "}~{lessonReadTime} min read
+                    </p>
+                  </div>
+                </div>
 
-          {/* Flat masonry grid — all visible cards in id order */}
-          <div className="columns-1 md:columns-2 gap-6">
-            {visibleInsights.map((insight) => (
-              <Fragment key={insight.id}>
-                {insight.redacted ? (
-                  <RedactedCard insight={insight} />
-                ) : (
-                  <InsightCard insight={insight} onCopyLink={copyCardLink} />
-                )}
-                {explainers
-                  .filter((ex) => ex.appearsAfter === insight.id)
-                  .map((ex) => (
-                    <ExplainerCardEl key={ex.id} explainer={ex} />
-                  ))}
+                {/* Cream cards for this lesson */}
+                <section className="bg-cream border-b-[3px] border-brutal-black py-10">
+                  <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
+                    <div className="columns-1 md:columns-2 gap-6">
+                      {lessonInsights.map((insight) => (
+                        <Fragment key={insight.id}>
+                          <InsightCard insight={insight} onCopyLink={copyCardLink} />
+                          {explainers
+                            .filter((ex) => ex.appearsAfter === insight.id)
+                            .map((ex) => <ExplainerCardEl key={ex.id} explainer={ex} />)}
+                        </Fragment>
+                      ))}
+                      {/* Redacted at end of lesson 2 */}
+                      {redactedCard && <RedactedCard insight={redactedCard} />}
+                    </div>
+                  </div>
+                </section>
               </Fragment>
-            ))}
-          </div>
+            );
+          })}
+        </>
+      ) : (
+        // ── CATEGORY FLAT VIEW ───────────────────────────────────
+        <section className="bg-cream py-10 border-b-[3px] border-brutal-black">
+          <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
+            {/* Explainer legend */}
+            <div className="flex flex-wrap items-center gap-3 mb-8">
+              <div className="flex items-center gap-2 bg-brutal-yellow border-[2px] border-brutal-black px-3 py-1.5">
+                <Info size={12} strokeWidth={2.5} />
+                <span className="font-mono text-[10px] font-bold uppercase tracking-widest">In Plain English</span>
+              </div>
+              <span className="font-mono text-xs text-brutal-black/40">
+                — yellow cards translate technical jargon for non-technical readers
+              </span>
+            </div>
 
-          {visibleInsights.length === 0 && (
-            <p className="font-mono text-sm text-brutal-black/40 text-center py-20">No insights in this category.</p>
-          )}
-        </div>
-      </section>
+            <div className="columns-1 md:columns-2 gap-6">
+              {visibleInsights.map((insight) => (
+                <Fragment key={insight.id}>
+                  {insight.redacted ? (
+                    <RedactedCard insight={insight} />
+                  ) : (
+                    <InsightCard insight={insight} onCopyLink={copyCardLink} />
+                  )}
+                  {explainers
+                    .filter((ex) => ex.appearsAfter === insight.id)
+                    .map((ex) => <ExplainerCardEl key={ex.id} explainer={ex} />)}
+                </Fragment>
+              ))}
+            </div>
+
+            {visibleInsights.length === 0 && (
+              <p className="font-mono text-sm text-brutal-black/40 text-center py-20">
+                No insights in this category.
+              </p>
+            )}
+          </div>
+        </section>
+      )}
 
       {/* ── Top 3 Takeaways ───────────────────────────────── */}
       <section className="bg-brutal-black border-b-[3px] border-brutal-black py-20 md:py-24">
