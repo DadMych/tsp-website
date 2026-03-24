@@ -1,0 +1,430 @@
+// ─────────────────────────────────────────────────────────────────────────────
+// All site content lives here. Edit copy without touching components.
+// ─────────────────────────────────────────────────────────────────────────────
+
+export const siteConfig = {
+  name: "tfpdev",
+  email: "oleksii@tfpdev.com",
+  // Replace with real URLs:
+  calendlyUrl: "https://calendly.com/oleksii-tfpdev/30min",
+  linkedinUrl: "PLACEHOLDER_LINKEDIN_URL",  // e.g. "https://linkedin.com/in/yourname"
+  githubUrl: "PLACEHOLDER_GITHUB_URL",      // e.g. "https://github.com/yourname"
+};
+
+// ── Services ─────────────────────────────────────────────────────────────────
+
+export interface Service {
+  id: string;
+  accent: string;
+  accentHex: string;
+  iconName: string;
+  title: string;
+  bestFor: string;
+  description: string;
+  deliverables: string[];
+  pricing: string;
+  wide?: boolean;
+}
+
+export const services: Service[] = [
+  {
+    id: "cto",
+    accent: "bg-brutal-yellow",
+    accentHex: "#FFE600",
+    iconName: "Rocket",
+    title: "CTO as a Service",
+    bestFor: "Startups post-funding that need technical leadership yesterday.",
+    description:
+      "Your startup needs a CTO but can't afford a $300k/year hire. I step in as your fractional technical leader — designing architecture, setting up CI/CD, hiring developers, running sprints, and making sure your tech decisions today won't cost you tomorrow.",
+    deliverables: [
+      "Technical architecture & system design",
+      "Team hiring, onboarding, and mentoring",
+      "CI/CD pipelines & deployment processes",
+      "Sprint planning & delivery management",
+      "Vendor and tool evaluation",
+      "Technical due diligence for investors",
+    ],
+    pricing: "Monthly retainer · $3–15k/mo",
+    wide: true,
+  },
+  {
+    id: "mvp",
+    accent: "bg-brutal-blue",
+    accentHex: "#4ECDC4",
+    iconName: "Zap",
+    title: "MVP & Product Development",
+    bestFor: "Founders with a validated idea and a launch deadline.",
+    description:
+      "You have an idea and a deadline. I turn it into a production-ready product in 8–12 weeks — not a prototype that falls apart, but a real system with payments, auth, admin panels, and deployment pipelines.",
+    deliverables: [
+      "Full-stack web application (React/Next.js + Node.js/Python)",
+      "Database design & API architecture",
+      "Payment integration (Stripe, crypto, custom)",
+      "Admin dashboard & analytics",
+      "Cloud deployment (AWS, Vercel, Docker)",
+      "Documentation & handoff",
+    ],
+    pricing: "Fixed project · 8–12 weeks",
+  },
+  {
+    id: "bots",
+    accent: "bg-brutal-coral",
+    accentHex: "#FF6B6B",
+    iconName: "Bot",
+    title: "Bots & Automation",
+    bestFor: "Teams drowning in manual work. Operations that should run themselves.",
+    description:
+      "Telegram bots, Discord bots, WhatsApp integrations, workflow automation — if your team does something manually more than twice, I can automate it. From simple notification bots to complex multi-step business logic.",
+    deliverables: [
+      "Telegram / Discord / WhatsApp bots",
+      "CRM and tool integrations (API-to-API)",
+      "Automated reporting & notifications",
+      "Data scraping & processing pipelines",
+      "Zapier/Make replacement with custom code",
+      "Scheduled tasks & background workers",
+    ],
+    pricing: "Per project · Starting $500",
+  },
+  {
+    id: "payments",
+    accent: "bg-brutal-purple",
+    accentHex: "#A855F7",
+    iconName: "CreditCard",
+    title: "Payment Systems & Fintech",
+    bestFor: "Products where money moves — marketplaces, SaaS billing, crypto.",
+    description:
+      "I've built payment infrastructure from scratch — card issuance, crypto wallets, subscription billing, marketplace payouts. If money moves through your product, I know how to make it work reliably.",
+    deliverables: [
+      "Stripe / payment gateway integration",
+      "Subscription & recurring billing logic",
+      "Marketplace split payments",
+      "Crypto payment flows",
+      "KYC/AML compliance integration",
+      "Transaction monitoring & reconciliation",
+    ],
+    pricing: "Per integration · Custom quote",
+  },
+  {
+    id: "proptech",
+    accent: "bg-brutal-green",
+    accentHex: "#22C55E",
+    iconName: "Building2",
+    title: "Real Estate Tech",
+    bestFor: "EU agencies and PropTech startups replacing spreadsheets with systems.",
+    description:
+      "CRM systems, property listing platforms, management dashboards. Built for EU agencies and PropTech startups who are tired of spreadsheets and WhatsApp groups.",
+    deliverables: [
+      "Property listing & search platform",
+      "Agent/client CRM",
+      "Automated lead capture & follow-up",
+      "Property management dashboards",
+      "MLS / listing feed integrations",
+      "Client portals (buyer/seller/tenant)",
+    ],
+    pricing: "Per project · Custom quote",
+  },
+  {
+    id: "devops",
+    accent: "bg-brutal-orange",
+    accentHex: "#F97316",
+    iconName: "Server",
+    title: "DevOps & Infrastructure",
+    bestFor: "Anyone whose deployment process involves prayer.",
+    description:
+      "Servers, deployments, monitoring, telephony, automation tooling. The unglamorous work that keeps everything running. I set it up once, properly, so you don't think about it again.",
+    deliverables: [
+      "Server setup & configuration",
+      "Docker containerization",
+      "CI/CD pipeline setup",
+      "Monitoring & alerting",
+      "Telephony & communication systems",
+      "Cloud cost optimization",
+    ],
+    pricing: "Per engagement · Hourly or fixed",
+  },
+];
+
+// ── Projects ─────────────────────────────────────────────────────────────────
+
+export interface Project {
+  id: string;
+  accentHex: string;
+  title: string;
+  location: string;
+  tags: string[];
+  description: string;
+  metrics: string;
+  underNda?: boolean;
+  featured?: boolean; // spans 2 cols on desktop
+}
+
+export const projects: Project[] = [
+  {
+    id: "membership",
+    accentHex: "#FFE600",
+    title: "Full-Scale Membership Platform",
+    location: "CALIFORNIA, US",
+    tags: ["PAYMENTS", "E-COMMERCE", "COMMUNITY", "EVENTS", "TEAM MANAGEMENT"],
+    description:
+      "Built the entire digital infrastructure for a US, California-based organization — from scratch. Membership management with tiered access, integrated payment processing, online store with inventory management, event scheduling system, and community platform. Led a cross-functional team of 18 across design, development, and operations. Two parallel product lines: online platform and offline operational tools.",
+    metrics: "18-person team · 2 product lines · 6+ months · Full ownership from architecture to deployment",
+    underNda: true,
+    featured: true,
+  },
+  {
+    id: "fintech",
+    accentHex: "#A855F7",
+    title: "Fintech — Virtual Card Platform",
+    location: "TURKEY",
+    tags: ["FINTECH", "CRYPTO", "PAYMENTS", "KYC/AML"],
+    description:
+      "Crypto-to-card payment system. Users load crypto, get a virtual Visa card they can spend anywhere. Built the full pipeline: KYC verification, AML checks, transaction processing, card issuance API integration, and admin dashboard for operations team.",
+    metrics: "Full payment pipeline · KYC/AML compliance · Card issuance integration",
+  },
+  {
+    id: "agritech",
+    accentHex: "#22C55E",
+    title: "AgriTech — Farm Operations System",
+    location: "UKRAINE",
+    tags: ["AGRITECH", "AUTOMATION", "REAL-TIME", "GPS"],
+    description:
+      "Real-time operational system for agricultural businesses. GPS-based fuel consumption tracking per vehicle, automated shift logging with geofencing, performance-based bonus calculations, and management reporting dashboards. Replaced manual spreadsheet tracking across multiple farm locations.",
+    metrics: "Real-time GPS tracking · Automated payroll calculations · Multi-location",
+  },
+  {
+    id: "realestate",
+    accentHex: "#F97316",
+    title: "PropTech — Real Estate CRM & Listings",
+    location: "CYPRUS",
+    tags: ["PROPTECH", "CRM", "AUTOMATION", "EU"],
+    description:
+      "End-to-end platform for a real estate agency. Property listing with search and filtering, agent CRM with lead pipeline, automated follow-up sequences, property management dashboards, and client-facing portal for buyers and tenants.",
+    metrics: "Lead pipeline automation · Agent & client portals · EU market",
+  },
+  {
+    id: "govtech",
+    accentHex: "#4ECDC4",
+    title: "GovTech — Procurement Data Analytics",
+    location: "UKRAINE",
+    tags: ["GOVTECH", "DATA", "ENTERPRISE", "API INTEGRATION"],
+    description:
+      "Enterprise analytics platform integrating with Ukraine's national procurement system (Prozorro API). Automated data extraction, processing pipeline for large-scale procurement records, anomaly detection, and reporting dashboards for compliance monitoring.",
+    metrics: "National-scale data processing · Prozorro API integration · Compliance analytics",
+  },
+  {
+    id: "edtech",
+    accentHex: "#FFE600",
+    title: "EdTech — University Rankings Platform",
+    location: "UKRAINE",
+    tags: ["EDTECH", "DATA SCIENCE", "ANALYTICS", "RANKINGS"],
+    description:
+      "Data science and analytics platform for ranking Ukrainian higher education institutions. Data collection, processing pipelines, scoring algorithms, and public-facing ranking dashboards. One of the earliest large-scale projects — built for Forbes Ukraine.",
+    metrics: "NATIONAL UNIVERSITY RANKINGS · DATA SCIENCE · FORBES UKRAINE",
+  },
+  {
+    id: "bots-consolidated",
+    accentHex: "#FF6B6B",
+    title: "Telegram Bots & Automation — 20+ Projects",
+    location: "EU & CIS",
+    tags: ["BOTS", "TELEGRAM", "AUTOMATION", "MULTI-INDUSTRY"],
+    description:
+      "Two dozen+ Telegram bots across industries: inventory alerts for e-commerce, crop monitoring notifications for farms, marketing automation for agencies, order management bots, customer support automation, and operational dashboards delivered via bot interface.",
+    metrics: "20+ bots shipped · 6 countries · Agriculture, e-commerce, marketing, operations",
+  },
+];
+
+// ── Tech Stack ────────────────────────────────────────────────────────────────
+
+export const techStack = {
+  row1: [
+    "Python",
+    "TypeScript",
+    "JavaScript",
+    "React",
+    "Next.js",
+    "Node.js",
+    "PostgreSQL",
+    "MySQL",
+    "Python",
+    "TypeScript",
+    "JavaScript",
+    "React",
+    "Next.js",
+    "Node.js",
+    "PostgreSQL",
+    "MySQL",
+  ],
+  row2: [
+    "Docker",
+    "AWS",
+    "Linux",
+    "Stripe",
+    "Telegram API",
+    "CI/CD",
+    "Nginx",
+    "Redis",
+    "Docker",
+    "AWS",
+    "Linux",
+    "Stripe",
+    "Telegram API",
+    "CI/CD",
+    "Nginx",
+    "Redis",
+  ],
+};
+
+// ── How It Works ──────────────────────────────────────────────────────────────
+
+export interface Step {
+  number: string;
+  title: string;
+  description: string;
+  accentHex: string;
+}
+
+export const steps: Step[] = [
+  {
+    number: "01",
+    title: "You Talk,\nI Listen",
+    description:
+      "Book a 15-minute call. Tell me your business problem — not your tech wishlist. I'll be honest about whether I can help and what it will take.",
+    accentHex: "#FFE600",
+  },
+  {
+    number: "02",
+    title: "I Propose",
+    description:
+      "Within 48 hours you get a clear plan: architecture, timeline, team needs, and pricing. No 30-page decks. No bullshit. A real answer.",
+    accentHex: "#4ECDC4",
+  },
+  {
+    number: "03",
+    title: "I Deliver",
+    description:
+      "I embed with your team, set up processes, and ship the product. Weekly updates, full transparency, no surprises. I own the outcome — not just the code. No disappearing acts.",
+    accentHex: "#FF6B6B",
+  },
+];
+
+// ── Stats ─────────────────────────────────────────────────────────────────────
+
+export interface Stat {
+  value: string;
+  label: string;
+  accentHex: string;
+  rotate: string;
+}
+
+export const stats: Stat[] = [
+  { value: "8+",  label: "Years in Tech",     accentHex: "#FFE600", rotate: "-rotate-1" },
+  { value: "18",  label: "Largest Team Led",  accentHex: "#4ECDC4", rotate: "rotate-1" },
+  { value: "30+", label: "Projects Shipped",  accentHex: "#FF6B6B", rotate: "rotate-1" },
+  { value: "6+",  label: "Countries Served",  accentHex: "#22C55E", rotate: "-rotate-1" },
+];
+
+// ── Timeline ──────────────────────────────────────────────────────────────────
+
+export interface TimelineItem {
+  year: string;
+  event: string;
+}
+
+export const timeline: TimelineItem[] = [
+  { year: "2018", event: "First freelance client at 14" },
+  { year: "2020", event: "Enterprise clients, national-scale projects" },
+  { year: "2022", event: "Fintech, AgriTech, international expansion" },
+  { year: "2024", event: "Real estate tech, EU & Middle East clients" },
+  { year: "2025", event: "US, California engagement, team of 18" },
+  { year: "2026", event: "CTO as a Service — going independent" },
+];
+
+// ── Manifesto strip ───────────────────────────────────────────────────────────
+
+export const manifestoItems = [
+  "I DON'T DO ESTIMATES WITHOUT UNDERSTANDING YOUR PROBLEM",
+  "I DON'T WRITE CODE WITHOUT ARCHITECTURE",
+  "I DON'T DISAPPEAR AFTER DEPLOYMENT",
+  "I DON'T TAKE MORE THAN 3 CLIENTS",
+  "I SHIP",
+  "I DON'T DO ESTIMATES WITHOUT UNDERSTANDING YOUR PROBLEM",
+  "I DON'T WRITE CODE WITHOUT ARCHITECTURE",
+  "I DON'T DISAPPEAR AFTER DEPLOYMENT",
+  "I DON'T TAKE MORE THAN 3 CLIENTS",
+  "I SHIP",
+];
+
+// ── Anti-portfolio ────────────────────────────────────────────────────────────
+
+export const antiPortfolioItems = [
+  "I don't ship half-assed MVPs. If it goes to production, it works.",
+  "I don't do hourly maintenance for $15/hr.",
+  "I don't write code without understanding the business problem first.",
+  "I don't take on more than 3 clients at a time.",
+  "I don't ghost. Ever.",
+];
+
+// ── Wild card service ("Something Else?") ────────────────────────────────────
+
+export const wildCard = {
+  id: "wild",
+  iconName: "HelpCircle",
+  title: "Something Else?",
+  bestFor: "If none of the above fit — but you know you need technical help.",
+  description:
+    "Business doesn't fit into neat categories. Maybe you need a technical audit of your existing system. Maybe you need someone to interview and vet developer candidates. Maybe you need to migrate from one platform to another, set up analytics, build an internal tool, or just figure out what the hell your current dev team is actually doing.\n\nI've done all of that and more. If it involves code, architecture, or technical decisions — chances are I can help.",
+  examples: [
+    "Technical audit of an existing codebase",
+    "Interview & vet developer candidates",
+    "Platform migration (legacy → modern stack)",
+    "Internal tools & admin dashboards",
+    "Analytics & tracking setup",
+    '"Our dev disappeared — help us understand what we have"',
+    "Architecture review before fundraising",
+    "Rescue a failed project",
+  ],
+  pricing: "Let's talk · First call is free",
+};
+
+// ── Trust signals (replaces notableWork) ─────────────────────────────────────
+
+export interface TrustSignal {
+  id: string;
+  title: string;
+  description: string;
+  accentHex: string;
+}
+
+export const trustSignals: TrustSignal[] = [
+  {
+    id: "zero-ghosting",
+    title: "8 YEARS, ZERO GHOSTING",
+    description:
+      "Every project delivered. Every client can reach me. I don't disappear.",
+    accentHex: "#FFE600",
+  },
+  {
+    id: "team-of-18",
+    title: "TEAM OF 18",
+    description:
+      "Not a solo freelancer pretending to scale. I've actually led cross-functional teams — designers, developers, operations.",
+    accentHex: "#4ECDC4",
+  },
+  {
+    id: "six-countries",
+    title: "6+ COUNTRIES",
+    description:
+      "US, California, Turkey, Cyprus, Germany, UAE, Ukraine. Different markets, different problems, same delivery standard.",
+    accentHex: "#FF6B6B",
+  },
+  {
+    id: "enterprise-and-startup",
+    title: "ENTERPRISE & STARTUP",
+    description:
+      "From national-scale data systems (Prozorro API integration) to scrappy MVPs. I adapt to the context.",
+    accentHex: "#A855F7",
+  },
+];
+
+export const trustSubtext =
+  "Membership platform (US, California, 18-person team) · Fintech virtual cards (Turkey) · AgriTech operations (Ukraine) · Real estate CRM (Cyprus) · Procurement analytics · EdTech rankings · 20+ bots across EU & CIS — the work is real, the NDAs are too.";

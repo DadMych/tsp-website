@@ -1,7 +1,20 @@
 import type { NextConfig } from "next";
 
 const nextConfig: NextConfig = {
-  /* config options here */
+  allowedDevOrigins: ["192.168.0.200"],
+  // Statically export all pages — zero serverless functions needed on Vercel
+  // output: "export",  // Uncomment if you want pure static export (disables /icon route)
+
+  // Compress output
+  compress: true,
+
+  // Remove X-Powered-By header
+  poweredByHeader: false,
+
+  // Image optimization (using next/image if needed in future)
+  images: {
+    formats: ["image/avif", "image/webp"],
+  },
 };
 
 export default nextConfig;

@@ -1,0 +1,155 @@
+"use client";
+
+import { useEffect, useRef, useState } from "react";
+import { siteConfig } from "@/lib/data";
+
+type LineData = { type: "cmd" | "out"; text: string };
+
+const SEQUENCE: LineData[] = [
+  { type: "cmd", text: "$ whoami" },
+  { type: "out", text: "→ CTO as a Service  ·  8 years  ·  30+ projects" },
+  { type: "cmd", text: "$ uptime" },
+  { type: "out", text: "→ online since 2018  ·  zero days off" },
+  { type: "cmd", text: "$ ls ./skills/" },
+  { type: "out", text: "→ python  typescript  react  nextjs  postgres  docker  aws" },
+  { type: "cmd", text: "$ cat ./status" },
+  { type: "out", text: "→ AVAILABLE — 2 spots open · Q2 2026" },
+  { type: "cmd", text: "$ cat ./approach" },
+  { type: "out", text: '→ "solve the business problem. code is the tool."' },
+  { type: "cmd", text: "$ ./book-a-call.sh" },
+  { type: "out", text: "→ opening calendar..." },
+];
+
+const CHAR_DELAY = 42;   // ms per character while typing
+const POST_CMD   = 260;  // pause after command finishes before output appears
+const POST_OUT   = 750;  // pause after output before next command
+
+export default function Terminal() {
+  // All animation bookkeeping lives in a ref — no stale-closure issues
+  const anim = useRef({ seqIdx: 0, charIdx: 0, done: [] as LineData[] });
+
+  const [display, setDisplay] = useState<{
+    done: LineData[];
+    partial: string;
+  }>({ done: [], partial: "" });
+
+  const timer = useRef<ReturnType<typeof setTimeout>>(undefined);
+
+  // We store tick in a ref so the function always reads the latest anim state
+  const tick = useRef<() => void>(null!);
+
+  tick.current = () => {
+    const { seqIdx, charIdx, done } = anim.current;
+    const item = SEQUENCE[seqIdx];
+
+    if (!item) {
+      // All lines done — stop, keep final state visible
+      return;
+    }
+
+    if (item.type === "cmd") {
+      const next = charIdx + 1;
+      const partial = item.text.slice(0, next);
+
+      if (next < item.text.length) {
+        // Still typing
+        anim.current.charIdx = next;
+        setDisplay(d => ({ ...d, partial }));
+        timer.current = setTimeout(() => tick.current(), CHAR_DELAY);
+      } else {
+        // Command fully typed — show cursor pause, then move on
+        anim.current.charIdx = 0;
+        setDisplay(d => ({ ...d, partial: item.text }));
+        timer.current = setTimeout(() => {
+          anim.current.seqIdx = seqIdx + 1;
+          tick.current();
+        }, POST_CMD);
+      }
+    } else {
+      // Output line — push the preceding cmd + this output into done, clear partial
+      const prevCmd = SEQUENCE[seqIdx - 1];
+      const newDone = [...done, prevCmd, item];
+      anim.current.done = newDone;
+      anim.current.seqIdx = seqIdx + 1;
+      anim.current.charIdx = 0;
+      setDisplay({ done: newDone, partial: "" });
+      timer.current = setTimeout(() => tick.current(), POST_OUT);
+    }
+  };
+
+  useEffect(() => {
+    timer.current = setTimeout(() => tick.current(), 900);
+    return () => {
+      if (timer.current) clearTimeout(timer.current);
+    };
+  }, []);
+
+  const openCalendly = () => {
+    if (typeof window !== "undefined" && (window as any).Calendly) {
+      (window as any).Calendly.initPopupWidget({ url: siteConfig.calendlyUrl });
+    }
+  };
+
+  // Did the last output line ("opening calendar...") finish?
+  const isLastLineShown = display.done.some(
+    l => l.type === "out" && l.text.includes("opening calendar")
+  );
+
+  return (
+    <div
+      className="border-[3px] border-brutal-black bg-[#0a0a0a] font-mono text-sm rotate-1 overflow-hidden select-none"
+      style={{ boxShadow: "8px 8px 0px 0px #000000" }}
+    >
+      {/* Title bar */}
+      <div className="flex items-center gap-2 px-4 py-2.5 border-b-[2px] border-white/10 bg-[#111111]">
+        <span className="w-3 h-3 rounded-full bg-[#FF5F57] border border-black/30 flex-shrink-0" />
+        <span className="w-3 h-3 rounded-full bg-[#FFBD2E] border border-black/30 flex-shrink-0" />
+        <span className="w-3 h-3 rounded-full bg-[#28C840] border border-black/30 flex-shrink-0" />
+        <span className="ml-3 text-white/40 text-[11px] font-bold tracking-widest uppercase">
+          oleksii@tfpdev ~
+        </span>
+      </div>
+
+      {/* Terminal body */}
+      <div className="p-5 min-h-[300px] flex flex-col gap-1.5 text-[13px] leading-relaxed">
+        {/* Completed lines */}
+        {display.done.map((line, i) => (
+          <div
+            key={i}
+            className={
+              line.type === "cmd"
+                ? "text-[#4ade80]"
+                : "text-white/55 pl-0"
+            }
+          >
+            {line.text}
+          </div>
+        ))}
+
+        {/* Currently typing line (command only) + cursor */}
+        {display.partial ? (
+          <div className="text-[#4ade80]">
+            {display.partial}
+            <span className="cursor-blink text-[#4ade80]">▋</span>
+          </div>
+        ) : (
+          /* Idle prompt between lines */
+          <div className="text-[#4ade80]">
+            <span className="text-white/25">$ </span>
+            <span className="cursor-blink text-[#4ade80]">▋</span>
+          </div>
+        )}
+
+        {/* Calendly call-to-action after last line */}
+        {isLastLineShown && (
+          <button
+            onClick={openCalendly}
+            className="mt-3 inline-flex items-center gap-2 border-[2px] border-brutal-yellow bg-brutal-yellow text-brutal-black font-mono font-bold text-xs uppercase tracking-wide px-4 py-2 w-fit hover:bg-transparent hover:text-brutal-yellow transition-colors duration-150 cursor-pointer"
+          >
+            → open calendly
+          </button>
+        )}
+      </div>
+    </div>
+  );
+}

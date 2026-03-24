@@ -1,0 +1,164 @@
+# CURSOR PROMPT v6 — Focused Fixes
+
+## 1. TRUST SIGNALS — Fix colors
+
+The trust signal cards have random colored squares in the corners (pink, yellow, purple, light blue) — these don't belong, they're not in the design system. Remove all colored squares/decorative elements from these cards. Keep them clean: black border, white/cream background, black text. No accent colors on these cards.
+
+---
+
+## 2. CTO AS A SERVICE CARD — Expand into a premium section
+
+This is the MAIN offering. It should not look like one of six equal cards. Make it a full-width premium block that feels like a mini landing page within the services section.
+
+Replace the current CTO as a Service card with this structure:
+
+```
+┌─────────────────────────────────────────────────────────────────────┐
+│ [full-width, yellow top border 6px]                                 │
+│                                                                     │
+│  LEFT COLUMN (55%):                    RIGHT COLUMN (45%):          │
+│                                                                     │
+│  [Rocket icon] CTO AS A SERVICE       WHAT YOU GET:                 │
+│  [START HERE badge]                   ─────────────────             │
+│                                       · Technical architecture      │
+│  BEST FOR: Startups post-funding      · Team hiring & mentoring     │
+│  that need technical leadership       · CI/CD & deployment          │
+│  yesterday.                           · Sprint planning & delivery  │
+│                                       · Vendor evaluation           │
+│  Your startup needs a CTO but         · Due diligence for investors │
+│  can't afford a $300k/year hire...    · Architecture reviews        │
+│                                       · Technical interviews        │
+│                                                                     │
+│  ┌──────────────────┐ ┌──────────────────┐                         │
+│  │ EMBEDDED CTO     │ │ CONSULTING &     │                         │
+│  │                  │ │ ADVISORY         │                         │
+│  │ I join your team │ │ Need a second    │                         │
+│  │ part-time. Run   │ │ opinion? One-off │                         │
+│  │ sprints, manage  │ │ architecture     │                         │
+│  │ devs, own the    │ │ review, tech     │                         │
+│  │ tech roadmap.    │ │ audit, or hiring │                         │
+│  │                  │ │ consultation.    │                         │
+│  │ RETAINER         │ │ PER SESSION      │                         │
+│  │ $3-15K/MO       │ │ FROM $200        │                         │
+│  └──────────────────┘ └──────────────────┘                         │
+│                                                                     │
+│  [BOOK A CALL →]                                                    │
+│                                                                     │
+└─────────────────────────────────────────────────────────────────────┘
+```
+
+The two sub-cards inside ("EMBEDDED CTO" and "CONSULTING & ADVISORY") should be styled as nested cards with lighter borders (border-1 instead of border-3) and a subtle background difference (slightly darker cream or light gray).
+
+This makes it clear there are TWO ways to engage: ongoing retainer OR one-off consulting. Many potential clients don't need a full retainer — they just want an hour to review their architecture or help interview a developer. This captures them too.
+
+---
+
+## 3. ADD FORBES PROJECT CARD
+
+Add a new project card to the projects section. Place it after the GovTech card (before the Telegram Bots card).
+
+```
+Project:
+  Color accent: Yellow (#FFE600)
+  Location: "UKRAINE"
+  Title: "EDTECH — UNIVERSITY RANKINGS PLATFORM"
+  Description: "Data science and analytics platform for ranking Ukrainian higher education institutions. Data collection, processing pipelines, scoring algorithms, and public-facing ranking dashboards. One of the earliest large-scale projects — built for Forbes Ukraine."
+  Metrics line: "NATIONAL UNIVERSITY RANKINGS · DATA SCIENCE · FORBES UKRAINE"
+  Tags: EDTECH · DATA SCIENCE · ANALYTICS · RANKINGS
+```
+
+Note: Forbes is mentioned naturally as the client for THIS specific project, not as a general name-drop. This is honest — it was a real project about university rankings.
+
+---
+
+## 4. REDUCE CTA BUTTONS
+
+There are too many "BOOK A CALL" and contact links scattered everywhere. The rule: MAX 4 call-to-action points on the entire page:
+
+1. **Navbar** — "BOOK A CALL" button (stays, it's always visible)
+2. **Hero** — "BOOK A CALL →" button (stays, it's the primary CTA)
+3. **After services** — "BOOK A FREE 15-MIN CALL" (stays, natural decision point)
+4. **Footer** — "BOOK A CALL →" + email + links (stays, final CTA)
+
+**REMOVE these CTAs:**
+- Remove the CTA button inside the "Something Else?" card ("DESCRIBE YOUR PROBLEM →"). The card already has the "BOOK A FREE 15-MIN CALL" right below it in the services outro.
+- Remove the "START WITH A 15-MIN CALL →" after the How It Works section. The section already explains the process — another button is redundant. The reader will scroll to the footer CTA or use the navbar button.
+- Remove the "LET'S WORK TOGETHER" repeating marquee text above the footer CTA. It's visual noise. The footer headline "YOU MADE IT TO THE BOTTOM" is enough.
+- Remove the CTA inside the CTO as a Service card IF the services outro CTA is close enough. Or keep it only in the CTO card since it's the premium offering — your call.
+
+The principle: every CTA should feel like a natural decision point, not like being yelled at to buy.
+
+---
+
+## 5. TECH STACK — Replace marquee with a grid
+
+The scrolling ticker for tech stack feels like a repeat of the manifesto marquee. Two scrolling elements on the same page is one too many. Replace with a static grid that feels more technical and intentional.
+
+Design: A dark section (black background) with tech labels arranged in a clean grid. Each tech is a "terminal tag" — monospace, bordered, but static. Some are highlighted (primary stack) and some are dimmer (secondary tools).
+
+```
+┌──────────────────────────────────────────────────────────────────┐
+│  TECH STACK                                                       │
+│                                                                   │
+│  PRIMARY:                                                         │
+│  ┌──────────┐ ┌────────────┐ ┌───────┐ ┌─────────┐ ┌──────────┐│
+│  │ PYTHON   │ │ TYPESCRIPT │ │ REACT │ │ NEXT.JS │ │ NODE.JS  ││
+│  └──────────┘ └────────────┘ └───────┘ └─────────┘ └──────────┘│
+│  ┌────────────┐ ┌───────┐                                        │
+│  │ POSTGRESQL │ │ MYSQL │                                        │
+│  └────────────┘ └───────┘                                        │
+│                                                                   │
+│  INFRASTRUCTURE:                                                  │
+│  ┌────────┐ ┌─────┐ ┌───────┐ ┌────────┐ ┌───────┐ ┌───────┐  │
+│  │ DOCKER │ │ AWS │ │ LINUX │ │ NGINX  │ │ REDIS │ │ CI/CD │  │
+│  └────────┘ └─────┘ └───────┘ └────────┘ └───────┘ └───────┘  │
+│                                                                   │
+│  INTEGRATIONS:                                                    │
+│  ┌────────┐ ┌──────────────┐ ┌──────────────┐                   │
+│  │ STRIPE │ │ TELEGRAM API │ │ PROZORRO API │                   │
+│  └────────┘ └──────────────┘ └──────────────┘                   │
+│                                                                   │
+│  "Your stack doesn't matter. Your architecture decisions do."     │
+│                                                                   │
+└──────────────────────────────────────────────────────────────────┘
+```
+
+Style:
+- Black background for the section
+- Tags: `border border-white/20 text-white/80 font-mono text-sm px-4 py-2`
+- PRIMARY tags get `border-brutal-yellow text-brutal-yellow` to stand out
+- INFRASTRUCTURE tags stay `border-white/30 text-white/60`
+- INTEGRATIONS tags get `border-white/20 text-white/40` — dimmest
+- Category labels ("PRIMARY:", "INFRASTRUCTURE:", "INTEGRATIONS:") in `text-white/30 font-mono text-xs tracking-widest uppercase`
+- The quote stays at the bottom, `text-white/50 font-mono text-sm italic`
+
+This is more CTO-like — organized, categorized, intentional. A scrolling ticker says "I know stuff." A categorized grid says "I've made deliberate technology choices."
+
+---
+
+## 6. SERVICES GRID LAYOUT UPDATE
+
+With the expanded CTO card, the grid should now be:
+
+```
+Row 1: [CTO AS A SERVICE ——————————— PREMIUM FULL WIDTH ——————————]
+        (with embedded/consulting sub-cards inside)
+
+Row 2: [MVP & PRODUCT DEV]    [BOTS & AUTOMATION]    [PAYMENT SYSTEMS]
+
+Row 3: [REAL ESTATE TECH]     [DEVOPS & INFRA]
+
+Row 4: [SOMETHING ELSE? ——————————— FULL WIDTH ——————————]
+```
+
+The middle rows (2-3) stay as they are — equal-width cards in a 3-column / 2-column grid.
+
+---
+
+## SUMMARY — 6 changes:
+1. Trust signals: remove random colored squares
+2. CTO card: expand to full-width premium block with embedded/consulting sub-options
+3. Forbes project: add EdTech university rankings card
+4. CTAs: reduce from ~7 to 4 strategic placement points
+5. Tech stack: replace scrolling marquee with categorized static grid
+6. Services grid: update layout for expanded CTO card

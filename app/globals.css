@@ -1,26 +1,187 @@
 @import "tailwindcss";
 
-:root {
-  --background: #ffffff;
-  --foreground: #171717;
+@theme {
+  /* Colors */
+  --color-cream: #FFFDF5;
+  --color-dirty-cream: #E8E0C8;
+  --color-brutal-black: #000000;
+  --color-brutal-yellow: #FFE600;
+  --color-brutal-coral: #FF6B6B;
+  --color-brutal-blue: #4ECDC4;
+  --color-brutal-purple: #A855F7;
+  --color-brutal-green: #22C55E;
+  --color-brutal-orange: #F97316;
+  --color-brutal-red: #FF0000;
+
+  /* Fonts */
+  --font-display: var(--font-space-grotesk), 'Space Grotesk', sans-serif;
+  --font-mono: var(--font-jetbrains-mono), 'JetBrains Mono', monospace;
+
+  /* Shadows — heavier than before */
+  --shadow-brutal: 6px 6px 0px 0px #000000;
+  --shadow-brutal-lg: 8px 8px 0px 0px #000000;
+  --shadow-brutal-sm: 3px 3px 0px 0px #000000;
+  --shadow-brutal-hover: 3px 3px 0px 0px #000000;
+  --shadow-brutal-none: 0px 0px 0px 0px #000000;
+  --shadow-brutal-red: 6px 6px 0px 0px #FF0000;
+  --shadow-brutal-yellow: 6px 6px 0px 0px #FFE600;
 }
 
-@theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
+/* ── Base ─────────────────────────────────────────── */
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
+html {
+  scroll-behavior: smooth;
 }
 
 body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  background-color: #FFFDF5;
+  color: #000000;
+  font-family: var(--font-display);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* ── Noise grain overlay — feels printed, not digital ─ */
+body::after {
+  content: '';
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  z-index: 9998;
+  opacity: 0.038;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='300' height='300'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.75' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='300' height='300' filter='url(%23n)' opacity='1'/%3E%3C/svg%3E");
+  background-repeat: repeat;
+  background-size: 200px 200px;
+}
+
+/* ── Background grid ──────────────────────────────── */
+.bg-grid {
+  background-image:
+    linear-gradient(rgba(0, 0, 0, 0.06) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(0, 0, 0, 0.06) 1px, transparent 1px);
+  background-size: 40px 40px;
+}
+
+/* ── Highlight / marker effect ────────────────────── */
+mark {
+  background-color: #FFE600;
+  color: #000000;
+  padding: 0 3px 1px;
+  display: inline;        /* inline avoids orphaned punctuation on new lines */
+  font-style: normal;
+}
+
+/* ── Sticker tape effect ─────────────────────────── */
+.tape {
+  position: relative;
+}
+.tape::before {
+  content: '';
+  position: absolute;
+  top: -7px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 44px;
+  height: 13px;
+  background: rgba(255, 255, 255, 0.65);
+  border: 1px solid rgba(0, 0, 0, 0.12);
+  z-index: 1;
+}
+
+/* ── NDA rubber stamp ─────────────────────────────── */
+.stamp {
+  display: inline-block;
+  border: 3px solid #FF0000;
+  color: #FF0000;
+  padding: 2px 6px;
+  font-family: var(--font-mono);
+  font-weight: 700;
+  font-size: 10px;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  transform: rotate(-4deg);
+  opacity: 0.75;
+  mix-blend-mode: multiply;
+}
+
+/* ── Marquee animations ───────────────────────────── */
+@keyframes marquee-left {
+  0%   { transform: translateX(0); }
+  100% { transform: translateX(-50%); }
+}
+@keyframes marquee-right {
+  0%   { transform: translateX(-50%); }
+  100% { transform: translateX(0); }
+}
+
+.animate-marquee-left {
+  animation: marquee-left 35s linear infinite;
+  display: flex;
+  width: max-content;
+}
+.animate-marquee-right {
+  animation: marquee-right 35s linear infinite;
+  display: flex;
+  width: max-content;
+}
+
+.animate-marquee-fast {
+  animation: marquee-left 20s linear infinite;
+  display: flex;
+  width: max-content;
+}
+
+/* ── Pulsing dot — availability indicator ─────────── */
+@keyframes pulse-dot {
+  0%, 100% { opacity: 1; transform: scale(1); }
+  50%       { opacity: 0.5; transform: scale(0.8); }
+}
+.pulse-dot {
+  animation: pulse-dot 1.8s ease-in-out infinite;
+}
+
+/* ── Terminal cursor blink ────────────────────────── */
+@keyframes blink {
+  0%, 100% { opacity: 1; }
+  50%       { opacity: 0; }
+}
+.cursor-blink {
+  animation: blink 1s step-end infinite;
+}
+
+/* ── CTA button shadow pulse ──────────────────────── */
+@keyframes shadow-pulse {
+  0%, 100% { box-shadow: 6px 6px 0px 0px #000000; }
+  50%       { box-shadow: 4px 4px 0px 0px #000000; }
+}
+.btn-pulse {
+  animation: shadow-pulse 2.5s ease-in-out infinite;
+}
+
+/* ── Cross-reference / anchor highlight flash ─────── */
+@keyframes flash-highlight {
+  0%   { box-shadow: 0 0 0 6px #FFE600, 6px 6px 0px 0px #000000; }
+  60%  { box-shadow: 0 0 0 4px #FFE600, 6px 6px 0px 0px #000000; }
+  100% { box-shadow: 6px 6px 0px 0px #000000; }
+}
+.highlight-flash {
+  animation: flash-highlight 2s ease-out;
+}
+
+/* ── Scrollbar hide (filter bar on mobile) ────────── */
+.scrollbar-hide::-webkit-scrollbar { display: none; }
+.scrollbar-hide { -ms-overflow-style: none; scrollbar-width: none; }
+
+/* ── Selection ────────────────────────────────────── */
+::selection {
+  background-color: #FFE600;
+  color: #000000;
 }
