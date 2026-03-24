@@ -3,6 +3,7 @@
 import { Fragment, useState, useEffect, useRef, useMemo, useCallback } from "react";
 import Link from "next/link";
 import { Info, Link2 } from "lucide-react";
+import Navigation from "@/components/Navigation";
 import {
   insights,
   categories,
@@ -389,6 +390,8 @@ export default function InsightsPage() {
 
   return (
     <>
+      <Navigation />
+
       {/* ── Black hero ────────────────────────────────────── */}
       <section className="bg-brutal-black border-b-[3px] border-brutal-black pt-24 pb-12">
         <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
