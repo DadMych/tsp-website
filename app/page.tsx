@@ -7,7 +7,6 @@ import Projects from "@/components/Projects";
 import AntiPortfolio from "@/components/AntiPortfolio";
 import TechStack from "@/components/TechStack";
 import HowItWorks from "@/components/HowItWorks";
-import Testimonials from "@/components/Testimonials";
 import About from "@/components/About";
 import SocialProof from "@/components/SocialProof";
 import Footer from "@/components/Footer";
@@ -25,7 +24,6 @@ export default function Home() {
         <AntiPortfolio />
         <TechStack />
         <HowItWorks />
-        <Testimonials />
         <About />
         <SocialProof />
       </main>

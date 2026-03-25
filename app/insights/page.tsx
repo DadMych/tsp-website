@@ -304,9 +304,16 @@ export default function InsightsPage() {
   }, [active]);
 
   const visibleIdsRef = useRef(visibleInsights.map((i) => i.id));
+  const isFirstRender = useRef(true);
   useEffect(() => {
     visibleIdsRef.current = visibleInsights.map((i) => i.id);
     focusedIndexRef.current = -1;
+    // Scroll to top when filter changes (skip initial mount)
+    if (isFirstRender.current) {
+      isFirstRender.current = false;
+    } else {
+      window.scrollTo({ top: 0, behavior: "smooth" });
+    }
   }, [visibleInsights]);
 
   // Visible non-redacted for counts/reading time

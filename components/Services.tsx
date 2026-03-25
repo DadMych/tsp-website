@@ -100,29 +100,30 @@ function CTOCard() {
           </div>
         </div>
 
-        {/* ── Pricing + consulting footnote + CTA ── */}
-        <div className="border-t-[2px] border-dashed border-brutal-black/20 pt-6 flex flex-col gap-5">
-          {/* Pricing badge */}
-          <div className="border-[2px] border-brutal-black bg-brutal-black px-4 py-2 w-fit">
-            <span className="font-mono text-xs font-bold text-brutal-yellow uppercase tracking-widest">
-              Monthly retainer · from $3k/mo
-            </span>
-          </div>
-
-          {/* Consulting footnote — quiet, no button */}
-          <p className="font-display text-sm text-brutal-black/40 italic max-w-xl">
+        {/* ── Pricing + CTA ── */}
+        <div className="border-t-[2px] border-dashed border-brutal-black/20 pt-4 flex flex-col gap-4">
+          {/* Consulting footnote */}
+          <p className="text-sm text-brutal-black/40 italic">
             Don&apos;t need a full retainer? I also do one-off consulting — architecture
-            reviews, technical audits, hiring help. Sometimes one conversation saves
-            months of wrong turns.
+            reviews, technical audits, hiring help. Sometimes one conversation saves months
+            of wrong turns.
           </p>
 
-          {/* CTA */}
-          <button
-            onClick={openCalendly}
-            className="inline-flex items-center justify-center border-[3px] border-brutal-black bg-brutal-yellow text-brutal-black font-display font-black uppercase tracking-wide px-6 py-3 shadow-brutal hover:shadow-brutal-hover hover:translate-x-[3px] hover:translate-y-[3px] active:shadow-none active:translate-x-[6px] active:translate-y-[6px] transition-all duration-150 cursor-pointer w-fit"
-          >
-            Book a Call →
-          </button>
+          <div className="flex flex-wrap items-center gap-4">
+            {/* Pricing badge */}
+            <div className="border-[2px] border-brutal-black bg-brutal-black px-4 py-2 w-fit">
+              <span className="font-mono text-xs font-bold text-brutal-yellow uppercase tracking-widest">
+                {cto.pricing}
+              </span>
+            </div>
+            {/* Book a Call */}
+            <button
+              onClick={openCalendly}
+              className="inline-flex items-center justify-center border-[3px] border-brutal-black bg-brutal-yellow text-brutal-black font-display font-black uppercase tracking-wide px-6 py-3 shadow-brutal hover:shadow-brutal-hover hover:translate-x-[3px] hover:translate-y-[3px] active:shadow-none active:translate-x-[6px] active:translate-y-[6px] transition-all duration-150 cursor-pointer"
+            >
+              Book a Call →
+            </button>
+          </div>
         </div>
       </div>
     </motion.div>

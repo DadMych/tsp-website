@@ -5,9 +5,8 @@
 export const siteConfig = {
   name: "tfpdev",
   email: "oleksii@tfpdev.com",
+  // Replace with real URLs:
   calendlyUrl: "https://calendly.com/oleksii-tfpdev/30min",
-  linkedinUrl: "PLACEHOLDER_LINKEDIN_URL", // e.g. "https://linkedin.com/in/yourname"
-  githubUrl:   "PLACEHOLDER_GITHUB_URL",   // leave empty string "" to hide the link
 };
 
 // ── Services ─────────────────────────────────────────────────────────────────
@@ -43,7 +42,7 @@ export const services: Service[] = [
       "Vendor and tool evaluation",
       "Technical due diligence for investors",
     ],
-    pricing: "Monthly retainer · $3–15k/mo",
+    pricing: "Monthly retainer · from $3k/mo",
     wide: true,
   },
   {
@@ -63,7 +62,7 @@ export const services: Service[] = [
       "Cloud deployment (AWS, Vercel, Docker)",
       "Documentation & handoff",
     ],
-    pricing: "Fixed project · Starting $3k",
+    pricing: "Fixed project · starting $5k",
   },
   {
     id: "bots",

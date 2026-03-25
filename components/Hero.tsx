@@ -71,7 +71,7 @@ export default function Hero() {
               Not the other way around.
             </motion.p>
 
-            {/* Body — adds NEW info not covered by the bold line */}
+            {/* Body — adds NEW info the bold line doesn't cover */}
             <motion.p
               custom={4} variants={fadeUp} initial="hidden" animate="visible"
               className="font-display text-base sm:text-lg text-brutal-black/65 max-w-xl leading-relaxed mb-8"
