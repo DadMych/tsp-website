@@ -129,10 +129,10 @@ export default function Hero() {
                   style={{ boxShadow: "3px 3px 0px 0px #000000" }}
                 >
                   <p className="font-mono text-[10px] text-black/70 leading-relaxed">
-                    <span className="text-black/35">/* for non-devs */</span><br />
-                    who I am, what I know,<br />
-                    &amp; whether I&apos;m available.<br />
-                    <span className="text-black/35">// terminal = my format</span>
+                    Don&apos;t be afraid — it&apos;s just
+                    a terminal with some info
+                    about me. Think of it as
+                    a very nerdy business card =)
                   </p>
                 </div>
               </motion.div>
