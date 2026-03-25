@@ -103,6 +103,13 @@ export default function Terminal() {
   );
 
   return (
+    <div className="flex flex-col gap-2">
+
+    {/* friendly note for non-devs */}
+    <p className="font-mono text-[10px] text-black/30 leading-relaxed">
+      ✦ not a developer? no worries — it&apos;s just a terminal showing who I am, what I know &amp; whether I&apos;m available =)
+    </p>
+
     <div
       className="border-[3px] border-brutal-black bg-[#0a0a0a] font-mono text-sm rotate-1 overflow-hidden select-none"
       style={{ boxShadow: "8px 8px 0px 0px #000000" }}
@@ -157,6 +164,8 @@ export default function Terminal() {
           </button>
         )}
       </div>
+    </div>
+
     </div>
   );
 }
