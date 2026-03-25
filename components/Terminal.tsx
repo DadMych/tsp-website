@@ -107,7 +107,7 @@ export default function Terminal() {
 
     {/* friendly note for non-devs */}
     <p className="font-mono text-[10px] text-black/30 leading-relaxed">
-      ✦ not a developer? no worries — it&apos;s just a terminal showing who I am, what I know &amp; whether I&apos;m available =)
+      ✦ not a dev? don&apos;t be scared — it&apos;s just a terminal with some info about me =)
     </p>
 
     <div
