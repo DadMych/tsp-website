@@ -71,13 +71,14 @@ export default function Hero() {
               Not the other way around.
             </motion.p>
 
-            {/* Body — clean, factual, no gimmicks */}
+            {/* Body — adds NEW info not covered by the bold line */}
             <motion.p
               custom={4} variants={fadeUp} initial="hidden" animate="visible"
               className="font-display text-base sm:text-lg text-brutal-black/65 max-w-xl leading-relaxed mb-8"
             >
-              8 years building products. Teams up to 18. 30+ projects shipped
-              across US, EU, and Middle East.
+              From Telegram bots to fintech platforms to 18-person team builds.
+              US, EU, and Middle East clients. I design systems that scale and
+              teams that ship.
             </motion.p>
 
             {/* CTAs — last element in left column */}

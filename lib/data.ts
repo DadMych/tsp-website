@@ -5,8 +5,9 @@
 export const siteConfig = {
   name: "tfpdev",
   email: "oleksii@tfpdev.com",
-  // Replace with real URLs:
   calendlyUrl: "https://calendly.com/oleksii-tfpdev/30min",
+  linkedinUrl: "PLACEHOLDER_LINKEDIN_URL", // e.g. "https://linkedin.com/in/yourname"
+  githubUrl:   "PLACEHOLDER_GITHUB_URL",   // leave empty string "" to hide the link
 };
 
 // ── Services ─────────────────────────────────────────────────────────────────
@@ -62,7 +63,7 @@ export const services: Service[] = [
       "Cloud deployment (AWS, Vercel, Docker)",
       "Documentation & handoff",
     ],
-    pricing: "Fixed project · 8–12 weeks",
+    pricing: "Fixed project · Starting $3k",
   },
   {
     id: "bots",

@@ -100,11 +100,26 @@ function CTOCard() {
           </div>
         </div>
 
-        {/* ── CTA ── */}
-        <div className="border-t-[2px] border-dashed border-brutal-black/20 pt-4">
+        {/* ── Pricing + consulting footnote + CTA ── */}
+        <div className="border-t-[2px] border-dashed border-brutal-black/20 pt-6 flex flex-col gap-5">
+          {/* Pricing badge */}
+          <div className="border-[2px] border-brutal-black bg-brutal-black px-4 py-2 w-fit">
+            <span className="font-mono text-xs font-bold text-brutal-yellow uppercase tracking-widest">
+              Monthly retainer · from $3k/mo
+            </span>
+          </div>
+
+          {/* Consulting footnote — quiet, no button */}
+          <p className="font-display text-sm text-brutal-black/40 italic max-w-xl">
+            Don&apos;t need a full retainer? I also do one-off consulting — architecture
+            reviews, technical audits, hiring help. Sometimes one conversation saves
+            months of wrong turns.
+          </p>
+
+          {/* CTA */}
           <button
             onClick={openCalendly}
-            className="inline-flex items-center justify-center border-[3px] border-brutal-black bg-brutal-yellow text-brutal-black font-display font-black uppercase tracking-wide px-6 py-3 shadow-brutal hover:shadow-brutal-hover hover:translate-x-[3px] hover:translate-y-[3px] active:shadow-none active:translate-x-[6px] active:translate-y-[6px] transition-all duration-150 cursor-pointer"
+            className="inline-flex items-center justify-center border-[3px] border-brutal-black bg-brutal-yellow text-brutal-black font-display font-black uppercase tracking-wide px-6 py-3 shadow-brutal hover:shadow-brutal-hover hover:translate-x-[3px] hover:translate-y-[3px] active:shadow-none active:translate-x-[6px] active:translate-y-[6px] transition-all duration-150 cursor-pointer w-fit"
           >
             Book a Call →
           </button>
@@ -311,26 +326,6 @@ export default function Services() {
             <ServiceCard key={service.id} service={service} index={i + 1} />
           ))}
           <WildCard index={regularServices.length + 1} />
-        </div>
-
-        {/* Consulting — quiet entry point, not a service card */}
-        <div className="border-t border-brutal-black/10 pt-8 mt-8">
-          <p className="font-display text-sm text-brutal-black/50 max-w-2xl leading-relaxed mb-3">
-            <span className="font-bold text-brutal-black/70">Not ready for a retainer?</span>{" "}
-            I also do one-off consulting sessions — architecture reviews, technical
-            audits, hiring help, second opinions. It&apos;s not my main offering,
-            but sometimes a single conversation saves you months of wrong turns.
-          </p>
-          <button
-            onClick={() => {
-              if (typeof window !== "undefined" && (window as any).Calendly) {
-                (window as any).Calendly.initPopupWidget({ url: siteConfig.calendlyUrl });
-              }
-            }}
-            className="font-mono text-xs text-brutal-black/55 hover:text-brutal-black underline underline-offset-4 transition-colors duration-150 cursor-pointer"
-          >
-            Book a session →
-          </button>
         </div>
 
         {/* Outro CTA */}
