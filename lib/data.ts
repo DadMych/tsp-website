@@ -154,6 +154,8 @@ export interface Project {
   metrics: string;
   underNda?: boolean;
   featured?: boolean; // spans 2 cols on desktop
+  insightLink?: string; // link to a relevant insight
+  insightText?: string; // link label
 }
 
 export const projects: Project[] = [
@@ -164,10 +166,12 @@ export const projects: Project[] = [
     location: "CALIFORNIA, US",
     tags: ["PAYMENTS", "E-COMMERCE", "COMMUNITY", "EVENTS", "TEAM MANAGEMENT"],
     description:
-      "Built the entire digital infrastructure for a US, California-based organization — from scratch. Membership management with tiered access, integrated payment processing, online store with inventory management, event scheduling system, and community platform. Led a cross-functional team of 18 across design, development, and operations. Two parallel product lines: online platform and offline operational tools.",
+      "Built the entire digital infrastructure for a California-based organization — two parallel product lines, one team. Membership tiers, payments, online store, event scheduling, community platform, and a driver delivery system. From first commit to production with a cross-functional team of 18.",
     metrics: "18-person team · 2 product lines · 6+ months · Full ownership from architecture to deployment",
     underNda: true,
     featured: true,
+    insightLink: "/insights",
+    insightText: "12 insights from building this project",
   },
   {
     id: "fintech",
@@ -176,8 +180,10 @@ export const projects: Project[] = [
     location: "TURKEY",
     tags: ["FINTECH", "CRYPTO", "PAYMENTS", "KYC/AML"],
     description:
-      "Crypto-to-card payment system. Users load crypto, get a virtual Visa card they can spend anywhere. Built the full pipeline: KYC verification, AML checks, transaction processing, card issuance API integration, and admin dashboard for operations team.",
+      "Payment system where users load crypto and spend via virtual cards. Full pipeline: KYC verification, compliance checks, transaction processing, card issuance API. Built the entire backend — not a wrapper around someone else's SDK.",
     metrics: "Full payment pipeline · KYC/AML compliance · Card issuance integration",
+    insightLink: "/insights#insight-12",
+    insightText: "How we built alternative payment rails",
   },
   {
     id: "agritech",
@@ -186,8 +192,10 @@ export const projects: Project[] = [
     location: "UKRAINE",
     tags: ["AGRITECH", "AUTOMATION", "REAL-TIME", "GPS"],
     description:
-      "Real-time operational system for agricultural businesses. GPS-based fuel consumption tracking per vehicle, automated shift logging with geofencing, performance-based bonus calculations, and management reporting dashboards. Replaced manual spreadsheet tracking across multiple farm locations.",
+      "Replaced spreadsheets and manual logging across multiple farm locations with a real-time operational system. GPS fuel tracking per vehicle, automated shift logging with geofencing, performance-based bonus calculations. The kind of system where getting the data wrong costs real money.",
     metrics: "Real-time GPS tracking · Automated payroll calculations · Multi-location",
+    insightLink: "/insights#insight-1",
+    insightText: "Real-time tracking architecture decisions",
   },
   {
     id: "realestate",
@@ -196,8 +204,10 @@ export const projects: Project[] = [
     location: "CYPRUS",
     tags: ["PROPTECH", "CRM", "AUTOMATION", "EU"],
     description:
-      "End-to-end platform for a real estate agency. Property listing with search and filtering, agent CRM with lead pipeline, automated follow-up sequences, property management dashboards, and client-facing portal for buyers and tenants.",
+      "An EU real estate agency was running their entire operation on spreadsheets and WhatsApp. Built them a proper platform: listings, agent CRM, automated follow-ups, management dashboards, client portals. They stopped losing leads.",
     metrics: "Lead pipeline automation · Agent & client portals · EU market",
+    insightLink: "/insights#insight-16",
+    insightText: "Why we built native instead of integrating",
   },
   {
     id: "govtech",
@@ -206,8 +216,10 @@ export const projects: Project[] = [
     location: "UKRAINE",
     tags: ["GOVTECH", "DATA", "ENTERPRISE", "API INTEGRATION"],
     description:
-      "Enterprise analytics platform integrating with Ukraine's national procurement system (Prozorro API). Automated data extraction, processing pipeline for large-scale procurement records, anomaly detection, and reporting dashboards for compliance monitoring.",
+      "Analytics platform consuming Ukraine's national procurement API (Prozorro). Automated extraction and processing of large-scale public purchasing records, anomaly detection, compliance reporting. The data volumes were genuinely large — this wasn't a startup dataset.",
     metrics: "National-scale data processing · Prozorro API integration · Compliance analytics",
+    insightLink: "/insights#insight-1",
+    insightText: "National-scale data pipeline decisions",
   },
   {
     id: "edtech",
@@ -217,7 +229,9 @@ export const projects: Project[] = [
     tags: ["EDTECH", "DATA SCIENCE", "ANALYTICS", "RANKINGS"],
     description:
       "Data science and analytics platform for ranking Ukrainian higher education institutions. Data collection, processing pipelines, scoring algorithms, and public-facing ranking dashboards. One of the earliest large-scale projects — built for Forbes Ukraine.",
-    metrics: "NATIONAL UNIVERSITY RANKINGS · DATA SCIENCE · FORBES UKRAINE",
+    metrics: "National university rankings · Data science · Forbes Ukraine",
+    insightLink: "/insights",
+    insightText: "Data pipeline and ranking decisions",
   },
   {
     id: "bots-consolidated",
@@ -226,8 +240,10 @@ export const projects: Project[] = [
     location: "EU & CIS",
     tags: ["BOTS", "TELEGRAM", "AUTOMATION", "MULTI-INDUSTRY"],
     description:
-      "Two dozen+ Telegram bots across industries: inventory alerts for e-commerce, crop monitoring notifications for farms, marketing automation for agencies, order management bots, customer support automation, and operational dashboards delivered via bot interface.",
+      "20+ Telegram bots across 6 countries and 5 industries. Inventory alerts, crop monitoring, marketing automation, order management, customer support. Some are simple notification pipes. Some run complex multi-step business logic that replaced entire manual workflows.",
     metrics: "20+ bots shipped · 6 countries · Agriculture, e-commerce, marketing, operations",
+    insightLink: "/insights#insight-11",
+    insightText: "Automation architecture patterns",
   },
 ];
 
@@ -329,7 +345,7 @@ export interface TimelineItem {
 }
 
 export const timeline: TimelineItem[] = [
-  { year: "2018", event: "First freelance client at 14" },
+  { year: "2018", event: "First freelance client" },
   { year: "2020", event: "Enterprise clients, national-scale projects" },
   { year: "2022", event: "Fintech, AgriTech, international expansion" },
   { year: "2024", event: "Real estate tech, EU & Middle East clients" },
@@ -356,10 +372,10 @@ export const manifestoItems = [
 
 export const antiPortfolioItems = [
   "I don't ship half-assed MVPs. If it goes to production, it works.",
-  "I don't do hourly maintenance for $15/hr.",
+  "I don't compete on price. I compete on outcomes.",
   "I don't write code without understanding the business problem first.",
   "I don't take on more than 3 clients at a time.",
-  "I don't ghost. Ever.",
+  "I don't start projects I can't finish.",
 ];
 
 // ── Wild card service ("Something Else?") ────────────────────────────────────

@@ -33,9 +33,11 @@ export default function About() {
 
             <div className="flex flex-col gap-4 font-display text-base sm:text-lg text-brutal-black/75 leading-relaxed">
               <p>
-                I started building software at 14 — not because I wanted to be
-                a developer, but because I had problems to solve and code was
-                the fastest way to solve them.
+                I started building software before most people start thinking
+                about careers — not because I wanted to be a developer, but
+                because I had problems to solve and code was the fastest way to
+                solve them. Eight years later, I&apos;ve shipped more production
+                systems than many engineers twice my age.
               </p>
               <p>
                 Eight years and 30+ projects later, I&apos;ve built everything

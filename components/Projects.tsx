@@ -35,6 +35,12 @@ export default function Projects() {
             <br />
             <span className="text-brutal-yellow">Here are some.</span>
           </h2>
+          <Link
+            href="/insights"
+            className="font-mono text-sm font-bold text-brutal-yellow underline underline-offset-4 hover:no-underline transition-all duration-150"
+          >
+            24 insights from building them →
+          </Link>
         </div>
 
         {/* Geography row */}
@@ -141,6 +147,16 @@ export default function Projects() {
                     </span>
                   ))}
                 </div>
+
+                {/* Insight link */}
+                {project.insightLink && project.insightText && (
+                  <Link
+                    href={project.insightLink}
+                    className="block font-mono text-xs text-brutal-yellow hover:text-white underline underline-offset-4 transition-colors duration-150"
+                  >
+                    {project.insightText} →
+                  </Link>
+                )}
               </div>
             </motion.div>
           ))}
@@ -165,7 +181,7 @@ export default function Projects() {
             href="/insights"
             className="font-mono text-sm font-bold text-brutal-yellow underline underline-offset-4 hover:no-underline transition-all duration-150 whitespace-nowrap"
           >
-            Read 25 insights from these projects →
+            Read 24 insights from these projects →
           </Link>
         </motion.div>
       </div>

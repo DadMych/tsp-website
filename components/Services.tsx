@@ -100,45 +100,6 @@ function CTOCard() {
           </div>
         </div>
 
-        {/* ── Engagement sub-cards ── */}
-        <div className="border-t-[2px] border-dashed border-brutal-black/20 pt-6">
-          <p className="font-mono text-[10px] font-bold uppercase tracking-[0.2em] text-brutal-black/40 mb-4">
-            How we can work together
-          </p>
-          <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
-
-            {/* Embedded CTO */}
-            <div className="border border-brutal-black/25 bg-dirty-cream p-5 flex flex-col gap-3">
-              <p className="font-mono font-black text-sm uppercase tracking-wide text-brutal-black">
-                Embedded CTO
-              </p>
-              <p className="font-display text-sm text-brutal-black/70 leading-relaxed flex-1">
-                I join your team part-time. Run sprints, manage developers,
-                own the tech roadmap. Your team ships faster, your decisions
-                get smarter.
-              </p>
-              <div className="font-mono text-xs font-black text-brutal-black uppercase tracking-widest border-t border-brutal-black/15 pt-2">
-                Retainer · $2k–10k/mo
-              </div>
-            </div>
-
-            {/* Consulting & Advisory */}
-            <div className="border border-brutal-black/25 bg-dirty-cream p-5 flex flex-col gap-3">
-              <p className="font-mono font-black text-sm uppercase tracking-wide text-brutal-black">
-                Consulting & Advisory
-              </p>
-              <p className="font-display text-sm text-brutal-black/70 leading-relaxed flex-1">
-                Need a second opinion? One-off architecture review, tech audit,
-                pre-hire candidate interview, or codebase assessment. No
-                ongoing commitment required.
-              </p>
-              <div className="font-mono text-xs font-black text-brutal-black uppercase tracking-widest border-t border-brutal-black/15 pt-2">
-                Per session · From $100
-              </div>
-            </div>
-          </div>
-        </div>
-
         {/* ── CTA ── */}
         <div className="border-t-[2px] border-dashed border-brutal-black/20 pt-4">
           <button
@@ -350,6 +311,26 @@ export default function Services() {
             <ServiceCard key={service.id} service={service} index={i + 1} />
           ))}
           <WildCard index={regularServices.length + 1} />
+        </div>
+
+        {/* Consulting — quiet entry point, not a service card */}
+        <div className="border-t border-brutal-black/10 pt-8 mt-8">
+          <p className="font-display text-sm text-brutal-black/50 max-w-2xl leading-relaxed mb-3">
+            <span className="font-bold text-brutal-black/70">Not ready for a retainer?</span>{" "}
+            I also do one-off consulting sessions — architecture reviews, technical
+            audits, hiring help, second opinions. It&apos;s not my main offering,
+            but sometimes a single conversation saves you months of wrong turns.
+          </p>
+          <button
+            onClick={() => {
+              if (typeof window !== "undefined" && (window as any).Calendly) {
+                (window as any).Calendly.initPopupWidget({ url: siteConfig.calendlyUrl });
+              }
+            }}
+            className="font-mono text-xs text-brutal-black/55 hover:text-brutal-black underline underline-offset-4 transition-colors duration-150 cursor-pointer"
+          >
+            Book a session →
+          </button>
         </div>
 
         {/* Outro CTA */}

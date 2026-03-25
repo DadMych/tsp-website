@@ -53,12 +53,12 @@ export default function Hero() {
               </h1>
             </motion.div>
 
-            {/* "Started at 14..." — bold display, continuation of headline */}
+            {/* Results line — bold display, continuation of headline */}
             <motion.p
               custom={2} variants={fadeUp} initial="hidden" animate="visible"
               className="font-display font-black text-xl sm:text-2xl text-brutal-black/60 uppercase tracking-tight mb-5"
             >
-              Started at 14. Still shipping at 22.
+              8 years of shipping. 30+ projects. Zero ghosting.
             </motion.p>
 
             {/* Subheadline with marker */}
