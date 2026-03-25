@@ -62,6 +62,15 @@ export default function TechStack() {
 
           {/* LEFT — tag groups */}
           <div className="flex flex-col gap-9 order-2 lg:order-1">
+            {/* Non-tech callout */}
+            <div className="flex items-start gap-3 border-[2px] border-brutal-yellow/50 bg-brutal-yellow/10 px-5 py-4">
+              <span className="flex-shrink-0 mt-0.5 border-[2px] border-brutal-yellow bg-brutal-yellow text-brutal-black font-mono text-[9px] font-black uppercase tracking-widest px-2 py-0.5 whitespace-nowrap">
+                Not a dev?
+              </span>
+              <p className="font-mono text-xs text-white/60 leading-relaxed">
+                I pick proven tools that won&apos;t lock you in or fall apart at scale. The specifics only matter to engineers — skip ahead if you&apos;re not one.
+              </p>
+            </div>
             {groups.map((group) => (
               <div key={group.label} className="flex flex-col gap-3">
                 <p className="font-mono text-[10px] font-bold uppercase tracking-[0.2em] text-white/25">

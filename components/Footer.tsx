@@ -2,6 +2,7 @@
 
 import { motion } from "framer-motion";
 import { siteConfig } from "@/lib/data";
+import DualCTA from "@/components/ui/DualCTA";
 
 export default function Footer() {
   const openCalendly = () => {
@@ -69,12 +70,12 @@ export default function Footer() {
             </p>
 
             {/* Primary CTA */}
-            <button
-              onClick={openCalendly}
-              className="btn-pulse inline-flex items-center justify-center border-[3px] border-brutal-yellow bg-brutal-yellow text-brutal-black font-display font-black uppercase px-10 py-5 text-xl tracking-wide hover:translate-x-[3px] hover:translate-y-[3px] hover:shadow-none active:translate-x-[6px] active:translate-y-[6px] transition-all duration-150 cursor-pointer"
-            >
-              Book a Call →
-            </button>
+            <DualCTA
+              onBookCall={openCalendly}
+              quizText="or start with a free quiz"
+              layout="stacked"
+              variant="dark"
+            />
 
             {/* Email — large mono */}
             <div className="flex flex-col gap-1 mt-2">
@@ -100,7 +101,7 @@ export default function Footer() {
             tfpdev
           </span>
           <span className="font-mono text-xs text-cream/25">
-            © 2026 · Based in Europe · US &amp; EU timezones · English &amp; Ukrainian
+            © 2026 · Based in Spain · EU &amp; US East Coast timezones · English · Ukrainian · Russian
           </span>
         </div>
       </div>

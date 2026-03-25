@@ -1,28 +1,20 @@
 "use client";
 
-import { useEffect, useState } from "react";
 import { usePathname } from "next/navigation";
 import Link from "next/link";
 import { siteConfig } from "@/lib/data";
 
 const NAV_ITEMS = [
-  { label: "Services",  anchor: "services"  },
-  { label: "Projects",  anchor: "projects"  },
-  { label: "Insights",  anchor: null,  href: "/insights", badge: "NEW" },
-  { label: "About",     anchor: "about"     },
-  { label: "Contact",   anchor: "contact"   },
+  { label: "Services",        anchor: "services"  },
+  { label: "Projects",        anchor: "projects"  },
+  { label: "About",           anchor: "about"     },
+  { label: "Insights",        anchor: null, href: "/insights", badge: "NEW" },
+  { label: "Start a Project", anchor: null, href: "/start"    },
 ];
 
 export default function Navigation() {
-  const [scrolled, setScrolled] = useState(false);
   const pathname = usePathname();
-  const isInsights = pathname === "/insights";
-
-  useEffect(() => {
-    const onScroll = () => setScrolled(window.scrollY > 60);
-    window.addEventListener("scroll", onScroll, { passive: true });
-    return () => window.removeEventListener("scroll", onScroll);
-  }, []);
+  const isOffHome = pathname !== "/";
 
   const openCalendly = () => {
     if (typeof window !== "undefined" && (window as any).Calendly) {
@@ -31,32 +23,19 @@ export default function Navigation() {
   };
 
   return (
-    <header
-      className={`fixed top-0 left-0 right-0 z-50 transition-all duration-200 ${
-        scrolled ? "bg-brutal-black border-b-[3px] border-brutal-black" : "bg-transparent"
-      }`}
-    >
+    <header className="fixed top-0 left-0 right-0 z-50 bg-brutal-black border-b-[3px] border-white/10">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex items-center justify-between h-16 gap-4">
+
         {/* Logo */}
         <Link
           href="/"
-          className={`font-mono font-bold text-xl tracking-tight transition-colors duration-200 flex-shrink-0 ${
-            scrolled ? "text-brutal-yellow" : isInsights ? "text-cream" : "text-brutal-black"
-          }`}
+          className="font-mono font-bold text-xl tracking-tight text-brutal-yellow flex-shrink-0"
         >
           tfpdev
         </Link>
 
         {/* Availability indicator */}
-        <div
-          className={`hidden sm:flex items-center gap-2 border-[2px] border-current px-3 py-1 font-mono text-xs font-bold uppercase tracking-widest transition-colors duration-200 ${
-            scrolled
-              ? "text-brutal-green border-brutal-green/60"
-              : isInsights
-              ? "text-brutal-green/80 border-brutal-green/40"
-              : "text-brutal-black border-brutal-black/30"
-          }`}
-        >
+        <div className="hidden sm:flex items-center gap-2 border-[2px] border-brutal-green/60 px-3 py-1 font-mono text-xs font-bold uppercase tracking-widest text-brutal-green">
           <span className="pulse-dot inline-block w-2 h-2 rounded-full bg-brutal-green flex-shrink-0" />
           Available · 2 spots Q2 2026
         </div>
@@ -66,17 +45,19 @@ export default function Navigation() {
           {NAV_ITEMS.map((item) => {
             const href = item.href
               ? item.href
-              : isInsights
+              : isOffHome
               ? `/#${item.anchor}`
               : `#${item.anchor}`;
 
-            const baseColor = scrolled || isInsights ? "text-cream/80" : "text-brutal-black";
+            const isActive = !!(item.href && pathname === item.href);
 
             return (
               <Link
                 key={item.label}
                 href={href}
-                className={`relative font-display font-bold text-xs uppercase tracking-[0.12em] transition-colors duration-200 hover:text-brutal-yellow flex items-center gap-1 ${baseColor}`}
+                className={`font-display font-bold text-xs uppercase tracking-[0.12em] transition-colors duration-150 hover:text-brutal-yellow flex items-center gap-1 ${
+                  isActive ? "text-brutal-yellow" : "text-cream"
+                }`}
               >
                 {item.label}
                 {item.badge && (
@@ -92,13 +73,9 @@ export default function Navigation() {
         {/* CTA */}
         <button
           onClick={openCalendly}
-          className={`flex-shrink-0 inline-flex items-center justify-center border-[3px] font-display font-bold uppercase text-xs tracking-wide px-4 py-2 transition-all duration-150 cursor-pointer ${
-            scrolled || isInsights
-              ? "border-brutal-yellow bg-brutal-yellow text-brutal-black shadow-brutal-sm hover:shadow-none hover:translate-x-[3px] hover:translate-y-[3px]"
-              : "border-brutal-black bg-brutal-black text-cream shadow-brutal-sm hover:shadow-none hover:translate-x-[3px] hover:translate-y-[3px]"
-          }`}
+          className="flex-shrink-0 inline-flex items-center justify-center border-[3px] border-brutal-yellow bg-brutal-yellow text-brutal-black font-display font-bold uppercase text-xs tracking-wide px-4 py-2 shadow-brutal-sm hover:shadow-none hover:translate-x-[3px] hover:translate-y-[3px] transition-all duration-150 cursor-pointer"
         >
-          Book a Call
+          Free Intro Call
         </button>
       </div>
     </header>

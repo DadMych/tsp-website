@@ -4,7 +4,8 @@ import Link from "next/link";
 import { motion } from "framer-motion";
 import type { Variants } from "framer-motion";
 import { MapPin } from "lucide-react";
-import { projects } from "@/lib/data";
+import { projects, siteConfig } from "@/lib/data";
+import DualCTA from "@/components/ui/DualCTA";
 
 const fadeUp: Variants = {
   hidden: { opacity: 0, y: 36 },
@@ -168,21 +169,35 @@ export default function Projects() {
           whileInView={{ opacity: 1 }}
           viewport={{ once: true }}
           transition={{ delay: 0.2, duration: 0.5 }}
-          className="mt-10 flex flex-col sm:flex-row items-center justify-center gap-4 text-center sm:text-left"
+          className="mt-10 flex flex-col gap-6"
         >
-          <p className="font-display font-bold text-white/40 text-base">
-            + more under NDA.{" "}
-            <span className="text-brutal-yellow font-black">
-              Let&apos;s talk about what I can build for you.
-            </span>
-          </p>
-          <span className="hidden sm:inline text-white/20">·</span>
-          <Link
-            href="/insights"
-            className="font-mono text-sm font-bold text-brutal-yellow underline underline-offset-4 hover:no-underline transition-all duration-150 whitespace-nowrap"
-          >
-            Read 24 insights from these projects →
-          </Link>
+          <div className="flex flex-col sm:flex-row items-center justify-center gap-4 text-center sm:text-left">
+            <p className="font-display font-bold text-white/40 text-base">
+              + more under NDA.{" "}
+              <span className="text-brutal-yellow font-black">
+                Let&apos;s talk about what I can build for you.
+              </span>
+            </p>
+            <span className="hidden sm:inline text-white/20">·</span>
+            <Link
+              href="/insights"
+              className="font-mono text-sm font-bold text-brutal-yellow underline underline-offset-4 hover:no-underline transition-all duration-150 whitespace-nowrap"
+            >
+              Read 24 insights from these projects →
+            </Link>
+          </div>
+          <div className="flex justify-center">
+            <DualCTA
+              onBookCall={() => {
+                if (typeof window !== "undefined" && (window as any).Calendly) {
+                  (window as any).Calendly.initPopupWidget({ url: siteConfig.calendlyUrl });
+                }
+              }}
+              quizText="not ready to talk? start with a free quiz"
+              layout="horizontal"
+              variant="dark"
+            />
+          </div>
         </motion.div>
       </div>
     </section>

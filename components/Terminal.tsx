@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect, useRef, useState } from "react";
+import { useEffect, useRef, useState, useCallback } from "react";
 import { siteConfig } from "@/lib/data";
 
 type LineData = { type: "cmd" | "out"; text: string };
@@ -20,12 +20,11 @@ const SEQUENCE: LineData[] = [
   { type: "out", text: "→ opening calendar..." },
 ];
 
-const CHAR_DELAY = 42;   // ms per character while typing
-const POST_CMD   = 260;  // pause after command finishes before output appears
-const POST_OUT   = 750;  // pause after output before next command
+const CHAR_DELAY = 65;    // ms per character while typing
+const POST_CMD   = 320;   // pause after command finishes before output appears
+const POST_OUT   = 1100;  // pause after output before next command
 
 export default function Terminal() {
-  // All animation bookkeeping lives in a ref — no stale-closure issues
   const anim = useRef({ seqIdx: 0, charIdx: 0, done: [] as LineData[] });
 
   const [display, setDisplay] = useState<{
@@ -34,6 +33,7 @@ export default function Terminal() {
   }>({ done: [], partial: "" });
 
   const timer = useRef<ReturnType<typeof setTimeout>>(undefined);
+  const bodyRef = useRef<HTMLDivElement>(null);
 
   // We store tick in a ref so the function always reads the latest anim state
   const tick = useRef<() => void>(null!);
@@ -77,8 +77,15 @@ export default function Terminal() {
     }
   };
 
+  // Auto-scroll body to bottom on every display update
   useEffect(() => {
-    timer.current = setTimeout(() => tick.current(), 900);
+    if (bodyRef.current) {
+      bodyRef.current.scrollTop = bodyRef.current.scrollHeight;
+    }
+  }, [display]);
+
+  useEffect(() => {
+    timer.current = setTimeout(() => tick.current(), 300);
     return () => {
       if (timer.current) clearTimeout(timer.current);
     };
@@ -110,8 +117,8 @@ export default function Terminal() {
         </span>
       </div>
 
-      {/* Terminal body */}
-      <div className="p-5 min-h-[300px] flex flex-col gap-1.5 text-[13px] leading-relaxed">
+      {/* Terminal body — fixed height, scrolls as content grows */}
+      <div ref={bodyRef} className="p-5 h-[290px] overflow-y-auto flex flex-col gap-1.5 text-[13px] leading-relaxed">
         {/* Completed lines */}
         {display.done.map((line, i) => (
           <div

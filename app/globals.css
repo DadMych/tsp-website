@@ -134,7 +134,7 @@ mark {
 }
 
 .animate-marquee-fast {
-  animation: marquee-left 20s linear infinite;
+  animation: marquee-left 45s linear infinite;
   display: flex;
   width: max-content;
 }

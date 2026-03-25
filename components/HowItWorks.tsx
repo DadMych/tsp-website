@@ -1,7 +1,8 @@
 "use client";
 
 import { motion } from "framer-motion";
-import { steps } from "@/lib/data";
+import { steps, siteConfig } from "@/lib/data";
+import DualCTA from "@/components/ui/DualCTA";
 
 export default function HowItWorks() {
 
@@ -24,7 +25,7 @@ export default function HowItWorks() {
         </div>
 
         {/* Steps */}
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-0 border-[3px] border-brutal-black">
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-0 border-[3px] border-brutal-black mb-12">
           {steps.map((step, i) => (
             <motion.div
               key={step.number}
@@ -82,6 +83,23 @@ export default function HowItWorks() {
           ))}
         </div>
 
+        {/* CTA after steps */}
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ delay: 0.3, duration: 0.4 }}
+        >
+          <DualCTA
+            onBookCall={() => {
+              if (typeof window !== "undefined" && (window as any).Calendly) {
+                (window as any).Calendly.initPopupWidget({ url: siteConfig.calendlyUrl });
+              }
+            }}
+              quizText="want to think it through first? free quiz"
+            layout="horizontal"
+          />
+        </motion.div>
       </div>
     </section>
   );

@@ -45,9 +45,9 @@ export default function About() {
                 startups to full-scale membership systems for US organizations.
               </p>
               <p>
-                BSc in Computer Science from Igor Sikorsky Kyiv Polytechnic
-                Institute — Ukraine&apos;s top technical university. Based in
-                Europe, relocating to Spain mid-2026.
+                BSc in Computer Science from Kyiv Polytechnic — the top
+                technical university in Central and Eastern Europe, founded
+                1898. Based in Spain, covering EU and US East Coast timezones.
               </p>
               <p className="font-black text-brutal-black uppercase tracking-tight">
                 I take on 2–3 clients at a time.
@@ -58,10 +58,10 @@ export default function About() {
             {/* Stickers */}
             <div className="flex flex-wrap gap-3">
               <span className="inline-block border-[3px] border-brutal-black bg-brutal-yellow px-3 py-1.5 font-mono text-xs font-bold shadow-brutal-sm uppercase tracking-wide -rotate-1">
-                8 YEARS IN THE GAME
+                8 YEARS. STILL SHIPPING.
               </span>
               <span className="inline-block border-[3px] border-brutal-black bg-brutal-blue px-3 py-1.5 font-mono text-xs font-bold shadow-brutal-sm uppercase tracking-wide rotate-1">
-                Europe → Spain
+                Based in Spain
               </span>
               <span className="inline-block border-[3px] border-brutal-black bg-brutal-coral px-3 py-1.5 font-mono text-xs font-bold shadow-brutal-sm uppercase tracking-wide -rotate-1">
                 I OWN THE OUTCOME

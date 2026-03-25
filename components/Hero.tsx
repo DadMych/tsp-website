@@ -4,6 +4,7 @@ import { motion } from "framer-motion";
 import type { Variants } from "framer-motion";
 import { siteConfig } from "@/lib/data";
 import Terminal from "@/components/Terminal";
+import DualCTA from "@/components/ui/DualCTA";
 
 const fadeUp: Variants = {
   hidden: { opacity: 0, y: 28 },
@@ -76,25 +77,27 @@ export default function Hero() {
               custom={4} variants={fadeUp} initial="hidden" animate="visible"
               className="font-display text-base sm:text-lg text-brutal-black/65 max-w-xl leading-relaxed mb-8"
             >
-              From Telegram bots to fintech platforms to 18-person team builds.
-              US, EU, and Middle East clients. I design systems that scale and
+              From 18-person team builds to fintech platforms to Telegram bots.
+              US, EU, and MENA clients. I design systems that scale and
               teams that ship.
             </motion.p>
 
             {/* CTAs — last element in left column */}
             <motion.div
               custom={5} variants={fadeUp} initial="hidden" animate="visible"
-              className="flex flex-col sm:flex-row gap-4"
+              className="flex flex-col gap-4"
             >
-              <button
-                onClick={openCalendly}
-                className="btn-pulse inline-flex items-center justify-center border-[3px] border-brutal-black bg-brutal-yellow text-brutal-black font-display font-black uppercase tracking-wide px-8 py-4 text-base sm:text-lg hover:translate-x-[3px] hover:translate-y-[3px] hover:shadow-none active:translate-x-[6px] active:translate-y-[6px] transition-all duration-150 cursor-pointer"
-              >
-                Book a Call →
-              </button>
+              <DualCTA
+                onBookCall={openCalendly}
+                quizText="not sure yet? take a free 60-second quiz"
+                layout="horizontal"
+              />
+              <p className="font-mono text-xs text-black/30">
+                The first call is always free. 15 minutes, no commitment, no sales pitch.
+              </p>
               <a
                 href="#services"
-                className="inline-flex items-center justify-center border-[3px] border-brutal-black bg-transparent text-brutal-black font-display font-black uppercase tracking-wide px-8 py-4 text-base sm:text-lg shadow-brutal hover:shadow-brutal-hover hover:translate-x-[3px] hover:translate-y-[3px] active:translate-x-[6px] active:translate-y-[6px] transition-all duration-150"
+                className="inline-flex items-center justify-center border-[3px] border-brutal-black bg-transparent text-brutal-black font-display font-black uppercase tracking-wide px-8 py-4 text-base sm:text-lg shadow-brutal hover:shadow-brutal-hover hover:translate-x-[3px] hover:translate-y-[3px] active:translate-x-[6px] active:translate-y-[6px] transition-all duration-150 w-fit"
               >
                 See What I Build ↓
               </a>
@@ -108,7 +111,32 @@ export default function Hero() {
             animate={{ opacity: 1, x: 0 }}
             transition={{ delay: 0.55, duration: 0.55, ease: "easeOut" }}
           >
-            <Terminal />
+            <div className="relative">
+              <Terminal />
+
+              {/* Annotation — explains the terminal to non-tech visitors */}
+              <motion.div
+                initial={{ opacity: 0, y: 8 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ delay: 1.8, duration: 0.4, ease: "easeOut" }}
+                className="absolute -top-3 -right-6 max-w-[200px]"
+              >
+                {/* Dashed connector line */}
+                <div className="absolute -left-6 top-1/2 w-6 border-t-[2px] border-dashed border-black/25 -translate-y-1/2" />
+                {/* Card */}
+                <div
+                  className="bg-brutal-yellow border-[2px] border-brutal-black p-3 rotate-[2deg]"
+                  style={{ boxShadow: "3px 3px 0px 0px #000000" }}
+                >
+                  <p className="font-mono text-[10px] text-black/70 leading-relaxed">
+                    <span className="text-black/35">/* for non-devs */</span><br />
+                    who I am, what I know,<br />
+                    &amp; whether I&apos;m available.<br />
+                    <span className="text-black/35">// terminal = my format</span>
+                  </p>
+                </div>
+              </motion.div>
+            </div>
           </motion.div>
         </div>
       </div>

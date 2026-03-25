@@ -7,10 +7,25 @@ import {
   type LucideIcon,
 } from "lucide-react";
 import { services, wildCard, siteConfig, type Service } from "@/lib/data";
+import DualCTA from "@/components/ui/DualCTA";
 
 const ICONS: Record<string, LucideIcon> = {
   Rocket, Zap, Bot, CreditCard, Building2, Server, HelpCircle,
 };
+
+// Splits "Main text (parenthetical note)" into styled parts
+function DeliverableText({ text }: { text: string }) {
+  const idx = text.indexOf("(");
+  if (idx <= 0) return <>{text}</>;
+  const main = text.slice(0, idx).trimEnd();
+  const note = text.slice(idx);
+  return (
+    <>
+      {main}{" "}
+      <span className="text-black/35 italic text-xs font-normal">{note}</span>
+    </>
+  );
+}
 
 const cardVariants: Variants = {
   hidden: { opacity: 0, y: 40 },
@@ -93,7 +108,7 @@ function CTOCard() {
               {cto.deliverables.map((item) => (
                 <li key={item} className="flex items-start gap-3 text-sm font-display text-brutal-black">
                   <span className="inline-block w-3.5 h-3.5 flex-shrink-0 mt-0.5 border-[2px] border-brutal-black bg-brutal-yellow" />
-                  {item}
+                  <DeliverableText text={item} />
                 </li>
               ))}
             </ul>
@@ -116,13 +131,12 @@ function CTOCard() {
                 {cto.pricing}
               </span>
             </div>
-            {/* Book a Call */}
-            <button
-              onClick={openCalendly}
-              className="inline-flex items-center justify-center border-[3px] border-brutal-black bg-brutal-yellow text-brutal-black font-display font-black uppercase tracking-wide px-6 py-3 shadow-brutal hover:shadow-brutal-hover hover:translate-x-[3px] hover:translate-y-[3px] active:shadow-none active:translate-x-[6px] active:translate-y-[6px] transition-all duration-150 cursor-pointer"
-            >
-              Book a Call →
-            </button>
+            <DualCTA
+              onBookCall={openCalendly}
+              bookCallLabel="Book a Free Intro Call →"
+              quizText="not sure if you need a CTO? free quiz"
+              layout="horizontal"
+            />
           </div>
         </div>
       </div>
@@ -205,7 +219,7 @@ function ServiceCard({ service, index }: { service: Service; index: number }) {
                   className="inline-block w-3.5 h-3.5 flex-shrink-0 mt-0.5 border-[2px] border-brutal-black"
                   style={{ backgroundColor: service.accentHex }}
                 />
-                {item}
+                <DeliverableText text={item} />
               </li>
             ))}
           </ul>
@@ -345,16 +359,17 @@ export default function Services() {
               Most engagements combine 2–3 of these. Let&apos;s talk.
             </p>
           </div>
-          <button
-            className="flex-shrink-0 inline-flex items-center justify-center border-[3px] border-brutal-yellow bg-brutal-yellow text-brutal-black font-display font-black uppercase px-6 py-3 shadow-brutal hover:shadow-brutal-hover hover:translate-x-[3px] hover:translate-y-[3px] active:translate-x-[6px] active:translate-y-[6px] active:shadow-none transition-all duration-150 cursor-pointer tracking-wide"
-            onClick={() => {
+          <DualCTA
+            onBookCall={() => {
               if (typeof window !== "undefined" && (window as any).Calendly) {
                 (window as any).Calendly.initPopupWidget({ url: siteConfig.calendlyUrl });
               }
             }}
-          >
-            Book a free 15-min call
-          </button>
+              quizText="want to figure out the right service? free quiz"
+            bookCallLabel="Book a Free 15-min Call →"
+            layout="horizontal"
+            variant="dark"
+          />
         </motion.div>
       </div>
     </section>

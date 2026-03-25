@@ -33,14 +33,14 @@ export const services: Service[] = [
     title: "CTO as a Service",
     bestFor: "Startups post-funding that need technical leadership yesterday.",
     description:
-      "Your startup needs a CTO but can't afford a $300k/year hire. I step in as your fractional technical leader — designing architecture, setting up CI/CD, hiring developers, running sprints, and making sure your tech decisions today won't cost you tomorrow.",
+      "Your startup needs a CTO but can't afford a $300k/year hire. I step in as your fractional technical leader — designing how your product is built, setting up automated deployment pipelines so updates go live safely, hiring and managing developers, running weekly development cycles, and making sure your tech decisions today won't cost you tomorrow.",
     deliverables: [
-      "Technical architecture & system design",
+      "Technical architecture (how your product is structured under the hood)",
       "Team hiring, onboarding, and mentoring",
-      "CI/CD pipelines & deployment processes",
-      "Sprint planning & delivery management",
-      "Vendor and tool evaluation",
-      "Technical due diligence for investors",
+      "Automated deployment (code goes live without manual uploads or prayer)",
+      "Weekly development cycles & delivery tracking",
+      "Choosing the right tools & services for your stack",
+      "Technical due diligence (what investors check before writing a check)",
     ],
     pricing: "Monthly retainer · from $3k/mo",
     wide: true,
@@ -55,11 +55,11 @@ export const services: Service[] = [
     description:
       "You have an idea and a deadline. I turn it into a production-ready product in 8–12 weeks — not a prototype that falls apart, but a real system with payments, auth, admin panels, and deployment pipelines.",
     deliverables: [
-      "Full-stack web application (React/Next.js + Node.js/Python)",
-      "Database design & API architecture",
+      "Full-stack web application (front-end + back-end — everything users see and everything behind it)",
+      "Database design & API architecture (how your data is stored and how systems talk to each other)",
       "Payment integration (Stripe, crypto, custom)",
       "Admin dashboard & analytics",
-      "Cloud deployment (AWS, Vercel, Docker)",
+      "Cloud deployment (your product hosted, live, and accessible worldwide)",
       "Documentation & handoff",
     ],
     pricing: "Fixed project · starting $5k",
@@ -131,10 +131,10 @@ export const services: Service[] = [
     description:
       "Servers, deployments, monitoring, telephony, automation tooling. The unglamorous work that keeps everything running. I set it up once, properly, so you don't think about it again.",
     deliverables: [
-      "Server setup & configuration",
-      "Docker containerization",
-      "CI/CD pipeline setup",
-      "Monitoring & alerting",
+      "Server setup (where your product actually runs)",
+      "Docker containerization (packaging your app so it runs the same everywhere)",
+      "Automated deployment pipeline (push code → it goes live, safely)",
+      "Monitoring & alerting (know when something breaks before your users do)",
       "Telephony & communication systems",
       "Cloud cost optimization",
     ],
@@ -302,7 +302,7 @@ export const steps: Step[] = [
     number: "01",
     title: "You Talk,\nI Listen",
     description:
-      "Book a 15-minute call. Tell me your business problem — not your tech wishlist. I'll be honest about whether I can help and what it will take.",
+      "Book a free 15-minute call. Tell me your business problem — not your tech wishlist. I'll be honest about whether I can help and what it will take. No agenda, no pitch.",
     accentHex: "#FFE600",
   },
   {
@@ -347,10 +347,10 @@ export interface TimelineItem {
 export const timeline: TimelineItem[] = [
   { year: "2018", event: "First freelance client" },
   { year: "2020", event: "Enterprise clients, national-scale projects" },
-  { year: "2022", event: "Fintech, AgriTech, international expansion" },
-  { year: "2024", event: "Real estate tech, EU & Middle East clients" },
-  { year: "2025", event: "US, California engagement, team of 18" },
-  { year: "2026", event: "CTO as a Service — going independent" },
+  { year: "2022", event: "International expansion, technical leadership roles" },
+  { year: "2023", event: "Real estate tech, EU & MENA clients" },
+  { year: "2024", event: "US engagement — full CTO role, team of 18" },
+  { year: "2026", event: "Independent CTO practice, Spain" },
 ];
 
 // ── Manifesto strip ───────────────────────────────────────────────────────────
