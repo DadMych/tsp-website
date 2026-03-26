@@ -166,8 +166,8 @@ export const projects: Project[] = [
     location: "CALIFORNIA, US",
     tags: ["PAYMENTS", "E-COMMERCE", "COMMUNITY", "EVENTS", "TEAM MANAGEMENT"],
     description:
-      "Built the entire digital infrastructure for a California-based organization — two parallel product lines, one team. Membership tiers, payments, online store, event scheduling, community platform, and a driver delivery system. From first commit to production with a cross-functional team of 18.",
-    metrics: "18-person team · 2 product lines · 6+ months · Full ownership from architecture to deployment",
+      "Built the entire digital infrastructure for a California-based organization — two parallel product lines, one team. Membership tiers, payments, online store, event scheduling, community platform, and a driver delivery system. From first commit to production.",
+    metrics: "2 product lines · 6+ months · Full ownership from architecture to deployment",
     underNda: true,
     featured: true,
     insightLink: "/insights",
@@ -316,7 +316,7 @@ export const steps: Step[] = [
     number: "03",
     title: "I Deliver",
     description:
-      "I embed with your team, set up processes, and ship the product. Weekly updates, full transparency, no surprises. I own the outcome — not just the code. No disappearing acts.",
+      "I embed with your team, set up processes, and ship the product. Weekly updates, full transparency, no surprises. I own the outcome — not just the code.",
     accentHex: "#FF6B6B",
   },
 ];
@@ -331,10 +331,10 @@ export interface Stat {
 }
 
 export const stats: Stat[] = [
-  { value: "8+",  label: "Years in Tech",     accentHex: "#FFE600", rotate: "-rotate-1" },
-  { value: "18",  label: "Largest Team Led",  accentHex: "#4ECDC4", rotate: "rotate-1" },
-  { value: "30+", label: "Projects Shipped",  accentHex: "#FF6B6B", rotate: "rotate-1" },
-  { value: "6+",  label: "Countries Served",  accentHex: "#22C55E", rotate: "-rotate-1" },
+  { value: "8+",  label: "Years in Tech",       accentHex: "#FFE600", rotate: "-rotate-1" },
+  { value: "24",  label: "Insights Published",  accentHex: "#4ECDC4", rotate: "rotate-1" },
+  { value: "30+", label: "Projects Shipped",    accentHex: "#FF6B6B", rotate: "rotate-1" },
+  { value: "6+",  label: "Countries Served",    accentHex: "#22C55E", rotate: "-rotate-1" },
 ];
 
 // ── Timeline ──────────────────────────────────────────────────────────────────
@@ -386,16 +386,16 @@ export const wildCard = {
   title: "Something Else?",
   bestFor: "If none of the above fit — but you know you need technical help.",
   description:
-    "Business doesn't fit into neat categories. Maybe you need a technical audit of your existing system. Maybe you need someone to interview and vet developer candidates. Maybe you need to migrate from one platform to another, set up analytics, build an internal tool, or just figure out what the hell your current dev team is actually doing.\n\nI've done all of that and more. If it involves code, architecture, or technical decisions — chances are I can help.",
+    "Business doesn't fit into neat categories. Maybe you need a technical audit of your existing system. Maybe you need someone to interview and vet developer candidates. Maybe you need to migrate from one platform to another, set up analytics, build an internal tool, or just figure out what the hell your current dev team is actually doing. I've done all of that and more. If it involves code, architecture, or technical decisions — chances are I can help.\n\nAlso: if things already went sideways — a developer ghosted, a project stalled, a codebase nobody understands — I've been there before. I'll tell you what you have and what to do next.",
   examples: [
+    '"Our dev disappeared — help us understand what we have"',
+    "Rescue a failed project",
+    "Architecture review before fundraising",
     "Technical audit of an existing codebase",
-    "Interview & vet developer candidates",
     "Platform migration (legacy → modern stack)",
+    "Interview & vet developer candidates",
     "Internal tools & admin dashboards",
     "Analytics & tracking setup",
-    '"Our dev disappeared — help us understand what we have"',
-    "Architecture review before fundraising",
-    "Rescue a failed project",
   ],
   pricing: "Let's talk · First call is free",
 };

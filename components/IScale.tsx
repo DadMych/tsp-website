@@ -1,51 +1,14 @@
 "use client";
 
 import { motion } from "framer-motion";
-import type { Variants } from "framer-motion";
 
 const CYAN = "#22d3ee";
-
-const roles = [
-  {
-    name: "FRONTEND",
-    description: "What your users see and touch.",
-  },
-  {
-    name: "BACKEND & API",
-    description: "What makes it actually work.",
-  },
-  {
-    name: "UI/UX DESIGN",
-    description: "How it looks, how it feels, how people use it.",
-  },
-  {
-    name: "DEVOPS",
-    description: "Infrastructure that doesn't need prayer.",
-  },
-  {
-    name: "MOBILE",
-    description: "iOS and Android. One codebase.",
-  },
-  {
-    name: "QA & TESTING",
-    description: "Before it ships.",
-  },
-];
-
-const cardVariants: Variants = {
-  hidden: { opacity: 0, y: 28 },
-  visible: (i: number) => ({
-    opacity: 1,
-    y: 0,
-    transition: { delay: i * 0.08, duration: 0.4, ease: "easeOut" as const },
-  }),
-};
 
 export default function IScale() {
   return (
     <section
       id="scale"
-      className="border-b-[3px] border-brutal-black py-16 md:py-20"
+      className="py-16 md:py-20"
       style={{ backgroundColor: "#0a0a0a" }}
     >
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -59,8 +22,8 @@ export default function IScale() {
           className="mb-10 flex flex-col gap-4"
         >
           <span
-            className="inline-block border-[3px] px-3 py-1 font-mono text-xs font-bold uppercase tracking-widest w-fit"
-            style={{ color: CYAN, borderColor: CYAN + "50" }}
+            className="inline-block border-[3px] px-3 py-1 font-mono text-xs font-bold uppercase tracking-widest w-fit text-brutal-black"
+            style={{ backgroundColor: CYAN, borderColor: CYAN }}
           >
             Scale
           </span>
@@ -70,50 +33,30 @@ export default function IScale() {
             I don&apos;t ship solo.
           </h2>
           <p className="font-display text-lg sm:text-xl font-semibold text-cream/80">
-            You talk to me. I bring the firepower.
-          </p>
-          <p className="font-display text-sm text-white/45 leading-relaxed max-w-xl">
-            When a project needs more than one pair of hands, I bring in specialists
-            I&apos;ve vetted and managed directly. You still get one person accountable for everything.
+            You talk to me. I bring the people.
           </p>
         </motion.div>
 
-        {/* Role grid — 3 col desktop, 2 col tablet, 1 col mobile */}
-        <div className="grid grid-cols-1 sm:grid-cols-2 xl:grid-cols-3 gap-4 mb-8">
-          {roles.map((role, i) => (
-            <motion.div
-              key={role.name}
-              custom={i}
-              variants={cardVariants}
-              initial="hidden"
-              whileInView="visible"
-              viewport={{ once: true, amount: 0.05 }}
-              className="border-[3px] border-white/10 p-5 flex flex-col gap-2 cursor-default"
-              style={{
-                backgroundColor: "#111111",
-                borderLeftColor: CYAN,
-                borderLeftWidth: "5px",
-              }}
-            >
-              <span
-                className="font-mono text-xs font-bold uppercase tracking-widest"
-                style={{ color: CYAN }}
-              >
-                {role.name}
-              </span>
-              <p className="font-display text-sm text-white/50 leading-snug">
-                {role.description}
-              </p>
-            </motion.div>
-          ))}
-        </div>
+        {/* Body paragraph */}
+        <motion.p
+          initial={{ opacity: 0, y: 16 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true, amount: 0.2 }}
+          transition={{ duration: 0.4, ease: "easeOut" }}
+          className="font-display text-base sm:text-lg text-white/55 leading-relaxed max-w-2xl mb-8"
+        >
+          When a project needs more than one pair of hands, I bring in people
+          I&apos;ve shipped with before. Not strangers from a freelance marketplace.
+          Design, dev, infrastructure, QA — whatever the project needs.
+          I vet them, I brief them, I manage them.
+        </motion.p>
 
-        {/* Proof line — the emotional anchor */}
+        {/* Proof line */}
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true, amount: 0.3 }}
-          transition={{ duration: 0.45, ease: "easeOut", delay: 0.15 }}
+          transition={{ duration: 0.45, ease: "easeOut", delay: 0.1 }}
           className="border-[3px] border-white/10 p-6 mb-5"
           style={{
             backgroundColor: "#111111",
@@ -125,7 +68,7 @@ export default function IScale() {
             My last project had 18 people across design, dev, and ops.
             <br />
             <span style={{ color: CYAN }}>
-              One Slack. One weekly sync. One person accountable: me.
+              One Slack. One weekly sync. One person running it: me.
             </span>
           </p>
         </motion.div>
@@ -135,10 +78,10 @@ export default function IScale() {
           initial={{ opacity: 0 }}
           whileInView={{ opacity: 1 }}
           viewport={{ once: true }}
-          transition={{ duration: 0.4, delay: 0.25 }}
+          transition={{ duration: 0.4, delay: 0.2 }}
           className="font-mono text-xs text-white/30 uppercase tracking-widest"
         >
-          One point of contact. One invoice. I own the result.
+          One point of contact. My responsibility.
         </motion.p>
 
       </div>

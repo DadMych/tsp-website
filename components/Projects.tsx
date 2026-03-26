@@ -22,7 +22,7 @@ export default function Projects() {
   return (
     <section
       id="projects"
-      className="border-b-[3px] border-brutal-black py-20 md:py-28"
+      className="py-20 md:py-28"
       style={{ backgroundColor: "#0a0a0a" }}
     >
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">

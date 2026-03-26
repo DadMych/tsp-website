@@ -6,8 +6,6 @@ import { siteConfig } from "@/lib/data";
 type LineData = { type: "cmd" | "out"; text: string };
 
 const SEQUENCE: LineData[] = [
-  { type: "cmd", text: "# don't be afraid — it's just a terminal with some info =)" },
-  { type: "out", text: "→ think of it like a fancy business card. promise it won't bite." },
   { type: "cmd", text: "$ whoami" },
   { type: "out", text: "→ Oleksii · CTO as a Service · 8 years building products · 30+ projects" },
   { type: "cmd", text: "$ cat ./skills" },
