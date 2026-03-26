@@ -77,7 +77,7 @@ export default function Hero() {
               custom={4} variants={fadeUp} initial="hidden" animate="visible"
               className="font-display text-base sm:text-lg text-brutal-black/65 max-w-xl leading-relaxed mb-8"
             >
-              Enterprise platforms, fintech systems, Telegram bots.
+              From fintech platforms to enterprise systems to full-scale product builds.
               US, EU, and MENA clients. I design systems that scale and
               teams that ship.
             </motion.p>

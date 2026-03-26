@@ -47,7 +47,7 @@ export default function About() {
               <p>
                 BSc in Computer Science from Kyiv Polytechnic — the top
                 technical university in Central and Eastern Europe, founded
-                1898. Based in Spain, covering EU and US East Coast timezones.
+                1898. Based in Europe, covering EU and US East Coast timezones.
               </p>
               <p className="font-black text-brutal-black uppercase tracking-tight">
                 I take on 2–3 clients at a time.
@@ -61,10 +61,10 @@ export default function About() {
                 8 YEARS. STILL SHIPPING.
               </span>
               <span className="inline-block border-[3px] border-brutal-black bg-brutal-blue px-3 py-1.5 font-mono text-xs font-bold shadow-brutal-sm uppercase tracking-wide rotate-1">
-                Based in Spain
+                Based in Europe
               </span>
               <span className="inline-block border-[3px] border-brutal-black bg-brutal-coral px-3 py-1.5 font-mono text-xs font-bold shadow-brutal-sm uppercase tracking-wide -rotate-1">
-                I OWN THE OUTCOME
+                Your reputation is my reputation.
               </span>
             </div>
           </motion.div>

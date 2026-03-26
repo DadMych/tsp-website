@@ -101,7 +101,7 @@ export default function Footer() {
             tfpdev
           </span>
           <span className="font-mono text-xs text-cream/25">
-            © 2026 · Based in Spain · EU &amp; US East Coast timezones · English · Ukrainian · Russian
+            © 2026 · Based in Europe · EU &amp; US East Coast timezones · English · Ukrainian · Russian
           </span>
         </div>
       </div>

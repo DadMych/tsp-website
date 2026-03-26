@@ -316,7 +316,7 @@ export const steps: Step[] = [
     number: "03",
     title: "I Deliver",
     description:
-      "I embed with your team, set up processes, and ship the product. Weekly updates, full transparency, no surprises. I own the outcome — not just the code.",
+      "I embed with your team, set up processes, and ship the product. Weekly updates, full transparency. I own the outcome — not just the code.",
     accentHex: "#FF6B6B",
   },
 ];
