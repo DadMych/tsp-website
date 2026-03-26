@@ -3,6 +3,7 @@ import Hero from "@/components/Hero";
 import StatsDivider from "@/components/StatsDivider";
 import ManifestoStrip from "@/components/ManifestoStrip";
 import Services from "@/components/Services";
+import IScale from "@/components/IScale";
 import Projects from "@/components/Projects";
 import AntiPortfolio from "@/components/AntiPortfolio";
 import TechStack from "@/components/TechStack";
@@ -20,12 +21,13 @@ export default function Home() {
         <StatsDivider />
         <ManifestoStrip />
         <Services />
+        <IScale />
         <Projects />
         <AntiPortfolio />
         <TechStack />
         <HowItWorks />
-        <About />
         <SocialProof />
+        <About />
       </main>
       <Footer />
     </>

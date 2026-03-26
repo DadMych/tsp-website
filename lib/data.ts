@@ -81,7 +81,7 @@ export const services: Service[] = [
       "Zapier/Make replacement with custom code",
       "Scheduled tasks & background workers",
     ],
-    pricing: "Per project · Starting $500",
+    pricing: "Per project · Custom quote",
   },
   {
     id: "payments",

@@ -6,16 +6,14 @@ import { siteConfig } from "@/lib/data";
 type LineData = { type: "cmd" | "out"; text: string };
 
 const SEQUENCE: LineData[] = [
+  { type: "cmd", text: "# don't be afraid — it's just a terminal with some info =)" },
+  { type: "out", text: "→ think of it like a fancy business card. promise it won't bite." },
   { type: "cmd", text: "$ whoami" },
-  { type: "out", text: "→ CTO as a Service  ·  8 years  ·  30+ projects" },
-  { type: "cmd", text: "$ uptime" },
-  { type: "out", text: "→ online since 2018  ·  zero days off" },
-  { type: "cmd", text: "$ ls ./skills/" },
-  { type: "out", text: "→ python  typescript  react  nextjs  postgres  docker  aws" },
+  { type: "out", text: "→ Oleksii · CTO as a Service · 8 years building products · 30+ projects" },
+  { type: "cmd", text: "$ cat ./skills" },
+  { type: "out", text: "→ I turn ideas into working software — from zero to launch, fast." },
   { type: "cmd", text: "$ cat ./status" },
   { type: "out", text: "→ AVAILABLE — 2 spots open · Q2 2026" },
-  { type: "cmd", text: "$ cat ./approach" },
-  { type: "out", text: '→ "solve the business problem. code is the tool."' },
   { type: "cmd", text: "$ ./book-a-call.sh" },
   { type: "out", text: "→ opening calendar..." },
 ];
@@ -103,13 +101,6 @@ export default function Terminal() {
   );
 
   return (
-    <div className="flex flex-col gap-2">
-
-    {/* friendly note for non-devs */}
-    <p className="font-mono text-[10px] text-black/30 leading-relaxed">
-      ✦ not a dev? don&apos;t be scared — it&apos;s just a terminal with some info about me =)
-    </p>
-
     <div
       className="border-[3px] border-brutal-black bg-[#0a0a0a] font-mono text-sm rotate-1 overflow-hidden select-none"
       style={{ boxShadow: "8px 8px 0px 0px #000000" }}
@@ -164,8 +155,6 @@ export default function Terminal() {
           </button>
         )}
       </div>
-    </div>
-
     </div>
   );
 }
