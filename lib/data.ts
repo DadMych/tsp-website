@@ -62,7 +62,7 @@ export const services: Service[] = [
       "Cloud deployment (your product hosted, live, and accessible worldwide)",
       "Documentation & handoff",
     ],
-    pricing: "Fixed project · starting $5k",
+    pricing: "Fixed project · starting $2k",
   },
   {
     id: "bots",
